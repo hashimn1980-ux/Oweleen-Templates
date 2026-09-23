@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Figtree:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --ivory: #F4F1EB;
+  --paper: #EDE9E1;
+  --stone: #E6E1D7;
+  --midnight: #0E2233;
+  --ink: #1C3244;
+  --slate: #5A7385;
+  --mist: #8C9BA6;
+  --rule: #C9CFD3;
+  --copper: #B8703F;
+  --copper-soft: #D9A882;
+}
+
+body { margin: 0; background: #2A2F33; font-family: 'Figtree', sans-serif; color: var(--midnight); -webkit-font-smoothing: antialiased; }
+
+.serif { font-family: 'Newsreader', Georgia, serif; }
+
+/* A4 = 210x297mm → 794 x 1123 px @96dpi. 1 unit (u) = 4px base grid. */
+.page {
+  width: 794px; height: 1123px; background: var(--ivory); position: relative; overflow: hidden;
+  padding: 40px 48px 36px; box-sizing: border-box; display: flex; flex-direction: column;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,.45);
+}
+
+/* Type scale — L01..L07 */
+.t-id { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--copper); font-weight: 500; }
+.t-h1 { font-family: 'Newsreader', serif; font-weight: 400; font-size: 60px; line-height: .98; letter-spacing: -.025em; color: var(--midnight); }
+.t-sup { font-size: 18px; line-height: 1.35; color: var(--slate); font-weight: 300; }
+.t-h4 { font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; color: var(--midnight); }
+.t-body { font-size: 12.5px; line-height: 1.6; color: var(--ink); font-weight: 400; }
+.t-meta { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--slate); font-weight: 500; }
+.t-note { font-size: 8.5px; line-height: 1.5; color: var(--mist); }
+.t-quote { font-family: 'Newsreader', serif; font-size: 28px; line-height: 1.12; letter-spacing: -.015em; color: var(--midnight); }
+
+.rule { height: 1px; background: var(--rule); }
+.rule-c { height: 1px; background: var(--copper); width: 32px; }
+.vrule { width: 1px; background: var(--copper); opacity: .7; }
+
+/* In-browser editing */
+.editing [contenteditable="true"] { outline: 1px dashed rgba(184,112,63,.55); outline-offset: 2px; cursor: text; }
+.editing [contenteditable="true"]:focus { outline: 1.5px solid #B8703F; background: rgba(217,168,130,.12); }
+
+/* Print one page as A4 PDF */
+@page { size: A4; margin: 0; }
+@media print {
+  body { background: #fff; }
+  .no-print, body.printing-one section { display: none !important; }
+  body.printing-one figure:not(.print-target) { display: none !important; }
+  body.printing-one main, body.printing-one main > div { padding: 0 !important; margin: 0 !important; gap: 0 !important; display: block !important; }
+  .page { box-shadow: none !important; width: 210mm !important; height: 297mm !important; zoom: 1; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .editing [contenteditable] { outline: none !important; background: none !important; }
+}

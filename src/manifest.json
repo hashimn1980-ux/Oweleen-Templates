@@ -1,0 +1,112 @@
+{
+  "templates": [
+    {
+      "key": "T01_Cover",
+      "name": "Cover / Title Page",
+      "blank": "Oweleen_T01_Cover_BLANK.docx",
+      "example": "Oweleen_T01_Cover_EXAMPLE.docx",
+      "pdf": "Oweleen_T01_Cover_EXAMPLE.pdf"
+    },
+    {
+      "key": "T02_Contents",
+      "name": "Table of Contents",
+      "blank": "Oweleen_T02_Contents_BLANK.docx",
+      "example": "Oweleen_T02_Contents_EXAMPLE.docx",
+      "pdf": "Oweleen_T02_Contents_EXAMPLE.pdf"
+    },
+    {
+      "key": "T03_Executive-Summary",
+      "name": "Executive Summary",
+      "blank": "Oweleen_T03_Executive-Summary_BLANK.docx",
+      "example": "Oweleen_T03_Executive-Summary_EXAMPLE.docx",
+      "pdf": "Oweleen_T03_Executive-Summary_EXAMPLE.pdf"
+    },
+    {
+      "key": "T04_Process",
+      "name": "Process / Workflow",
+      "blank": "Oweleen_T04_Process_BLANK.docx",
+      "example": "Oweleen_T04_Process_EXAMPLE.docx",
+      "pdf": "Oweleen_T04_Process_EXAMPLE.pdf"
+    },
+    {
+      "key": "T05_Timeline",
+      "name": "Vertical Timeline",
+      "blank": "Oweleen_T05_Timeline_BLANK.docx",
+      "example": "Oweleen_T05_Timeline_EXAMPLE.docx",
+      "pdf": "Oweleen_T05_Timeline_EXAMPLE.pdf"
+    },
+    {
+      "key": "T06_Structure",
+      "name": "Org / Structure Diagram",
+      "blank": "Oweleen_T06_Structure_BLANK.docx",
+      "example": "Oweleen_T06_Structure_EXAMPLE.docx",
+      "pdf": "Oweleen_T06_Structure_EXAMPLE.pdf"
+    },
+    {
+      "key": "T07_Data-Evidence",
+      "name": "Data / Evidence",
+      "blank": "Oweleen_T07_Data-Evidence_BLANK.docx",
+      "example": "Oweleen_T07_Data-Evidence_EXAMPLE.docx",
+      "pdf": "Oweleen_T07_Data-Evidence_EXAMPLE.pdf"
+    },
+    {
+      "key": "T08_Comparison",
+      "name": "Comparison (Before / After)",
+      "blank": "Oweleen_T08_Comparison_BLANK.docx",
+      "example": "Oweleen_T08_Comparison_EXAMPLE.docx",
+      "pdf": "Oweleen_T08_Comparison_EXAMPLE.pdf"
+    },
+    {
+      "key": "T09_Editorial-Feature",
+      "name": "Editorial Feature",
+      "blank": "Oweleen_T09_Editorial-Feature_BLANK.docx",
+      "example": "Oweleen_T09_Editorial-Feature_EXAMPLE.docx",
+      "pdf": "Oweleen_T09_Editorial-Feature_EXAMPLE.pdf"
+    },
+    {
+      "key": "T10_Section-Divider",
+      "name": "Section Divider",
+      "blank": "Oweleen_T10_Section-Divider_BLANK.docx",
+      "example": "Oweleen_T10_Section-Divider_EXAMPLE.docx",
+      "pdf": "Oweleen_T10_Section-Divider_EXAMPLE.pdf"
+    },
+    {
+      "key": "T11_Closing-Contact",
+      "name": "Closing / Contact",
+      "blank": "Oweleen_T11_Closing-Contact_BLANK.docx",
+      "example": "Oweleen_T11_Closing-Contact_EXAMPLE.docx",
+      "pdf": "Oweleen_T11_Closing-Contact_EXAMPLE.pdf"
+    }
+  ],
+  "master": {
+    "blank": "Oweleen_Master_All-Templates_BLANK.docx",
+    "example": "Oweleen_Master_All-Templates_EXAMPLE.docx",
+    "pdf": "Oweleen_Master_All-Templates_EXAMPLE.pdf",
+    "pdfBlank": "Oweleen_Master_All-Templates_BLANK-reference.pdf"
+  },
+  "guide": {
+    "docx": "Oweleen_Customization_Guide.docx",
+    "pdf": "Oweleen_Customization_Guide.pdf"
+  },
+  "icons": [
+    "search",
+    "doc",
+    "home",
+    "shield",
+    "calendar",
+    "chat",
+    "user",
+    "chart",
+    "target",
+    "layers",
+    "cycle",
+    "signal",
+    "key",
+    "compass",
+    "flag",
+    "mail",
+    "globe",
+    "building"
+  ],
+  "zip": "Oweleen_Template_Kit.zip"
+}
