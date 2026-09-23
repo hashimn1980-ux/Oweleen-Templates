@@ -39,17 +39,128 @@ body { margin: 0; background: #2A2F33; font-family: 'Figtree', sans-serif; color
 .rule-c { height: 1px; background: var(--copper); width: 32px; }
 .vrule { width: 1px; background: var(--copper); opacity: .7; }
 
-/* In-browser editing */
-.editing [contenteditable="true"] { outline: 1px dashed rgba(184,112,63,.55); outline-offset: 2px; cursor: text; }
-.editing [contenteditable="true"]:focus { outline: 1.5px solid #B8703F; background: rgba(217,168,130,.12); }
+/* In-browser & Modal live editing */
+.editing [contenteditable="true"],
+.modal-canvas [contenteditable="true"] {
+  outline-offset: 2px;
+  cursor: text;
+  transition: background-color 0.15s ease, outline-color 0.15s ease;
+}
+
+.modal-canvas [contenteditable="true"]:hover {
+  outline: 1px dashed rgba(184, 112, 63, 0.7);
+}
+
+.editing [contenteditable="true"]:focus,
+.modal-canvas [contenteditable="true"]:focus {
+  outline: 1.5px solid #B8703F !important;
+  background: rgba(217, 168, 130, 0.14) !important;
+}
+
+.modal-canvas.show-outlines [contenteditable="true"] {
+  outline: 1px dashed rgba(184, 112, 63, 0.35);
+}
 
 /* Print one page as A4 PDF */
 @page { size: A4; margin: 0; }
 @media print {
   body { background: #fff; }
+
+  /* Default single-card print */
   .no-print, body.printing-one section { display: none !important; }
   body.printing-one figure:not(.print-target) { display: none !important; }
   body.printing-one main, body.printing-one main > div { padding: 0 !important; margin: 0 !important; gap: 0 !important; display: block !important; }
-  .page { box-shadow: none !important; width: 210mm !important; height: 297mm !important; zoom: 1; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .editing [contenteditable] { outline: none !important; background: none !important; }
+  
+  /* Modal print mode */
+  body.modal-printing {
+    background: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+  body.modal-printing > *:not(#modal-root):not(.editor-modal-container) {
+    display: none !important;
+  }
+  body.modal-printing main:not(.modal-viewport),
+  body.modal-printing section,
+  body.modal-printing .modal-chrome,
+  body.modal-printing .no-print {
+    display: none !important;
+  }
+  body.modal-printing .modal-viewport {
+    position: static !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+    background: transparent !important;
+  }
+  body.modal-printing .modal-zoom-wrapper {
+    transform: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  body.modal-printing .print-modal-page,
+  body.modal-printing .print-modal-page .page {
+    display: flex !important;
+    box-shadow: none !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    max-width: 210mm !important;
+    max-height: 297mm !important;
+    margin: 0 !important;
+    zoom: 1 !important;
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .page {
+    box-shadow: none !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    zoom: 1;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .editing [contenteditable],
+  .modal-canvas [contenteditable] {
+    outline: none !important;
+    background: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Full multi-page report print mode */
+  body.printing-all-report {
+    background: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+  body.printing-all-report > *:not(#report-print-root) {
+    display: none !important;
+  }
+  body.printing-all-report #report-print-root {
+    display: block !important;
+    position: static !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  body.printing-all-report .report-page-wrapper {
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  body.printing-all-report .report-page-wrapper .page {
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
 }

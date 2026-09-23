@@ -1,81 +1,180 @@
 {
   "templates": [
     {
-      "key": "T01_Cover",
-      "name": "Cover / Title Page",
+      "code": "A1",
+      "set": "Set A: Market Notes",
+      "key": "A1_Cover",
+      "name": "Cover",
+      "desc": "Dark theme with skyline/architecture header photography and bottom metadata",
+      "isDark": true,
       "blank": "Oweleen_T01_Cover_BLANK.docx",
       "example": "Oweleen_T01_Cover_EXAMPLE.docx",
       "pdf": "Oweleen_T01_Cover_EXAMPLE.pdf"
     },
     {
-      "key": "T02_Contents",
-      "name": "Table of Contents",
-      "blank": "Oweleen_T02_Contents_BLANK.docx",
-      "example": "Oweleen_T02_Contents_EXAMPLE.docx",
-      "pdf": "Oweleen_T02_Contents_EXAMPLE.pdf"
-    },
-    {
-      "key": "T03_Executive-Summary",
-      "name": "Executive Summary",
-      "blank": "Oweleen_T03_Executive-Summary_BLANK.docx",
-      "example": "Oweleen_T03_Executive-Summary_EXAMPLE.docx",
-      "pdf": "Oweleen_T03_Executive-Summary_EXAMPLE.pdf"
-    },
-    {
-      "key": "T04_Process",
-      "name": "Process / Workflow",
-      "blank": "Oweleen_T04_Process_BLANK.docx",
-      "example": "Oweleen_T04_Process_EXAMPLE.docx",
-      "pdf": "Oweleen_T04_Process_EXAMPLE.pdf"
-    },
-    {
-      "key": "T05_Timeline",
-      "name": "Vertical Timeline",
-      "blank": "Oweleen_T05_Timeline_BLANK.docx",
-      "example": "Oweleen_T05_Timeline_EXAMPLE.docx",
-      "pdf": "Oweleen_T05_Timeline_EXAMPLE.pdf"
-    },
-    {
-      "key": "T06_Structure",
-      "name": "Org / Structure Diagram",
-      "blank": "Oweleen_T06_Structure_BLANK.docx",
-      "example": "Oweleen_T06_Structure_EXAMPLE.docx",
-      "pdf": "Oweleen_T06_Structure_EXAMPLE.pdf"
-    },
-    {
-      "key": "T07_Data-Evidence",
-      "name": "Data / Evidence",
-      "blank": "Oweleen_T07_Data-Evidence_BLANK.docx",
-      "example": "Oweleen_T07_Data-Evidence_EXAMPLE.docx",
-      "pdf": "Oweleen_T07_Data-Evidence_EXAMPLE.pdf"
-    },
-    {
-      "key": "T08_Comparison",
-      "name": "Comparison (Before / After)",
-      "blank": "Oweleen_T08_Comparison_BLANK.docx",
-      "example": "Oweleen_T08_Comparison_EXAMPLE.docx",
-      "pdf": "Oweleen_T08_Comparison_EXAMPLE.pdf"
-    },
-    {
-      "key": "T09_Editorial-Feature",
-      "name": "Editorial Feature",
+      "code": "A2",
+      "set": "Set A: Market Notes",
+      "key": "A2_Key-Findings-Pull-Quote",
+      "name": "Key findings + pull quote",
+      "desc": "Two-column layout, large quote callout, bottom landscape photo",
+      "isDark": false,
       "blank": "Oweleen_T09_Editorial-Feature_BLANK.docx",
       "example": "Oweleen_T09_Editorial-Feature_EXAMPLE.docx",
       "pdf": "Oweleen_T09_Editorial-Feature_EXAMPLE.pdf"
     },
     {
-      "key": "T10_Section-Divider",
-      "name": "Section Divider",
+      "code": "A3",
+      "set": "Set A: Market Notes",
+      "key": "A3_Narrative-Indicator-Rail",
+      "name": "Narrative + indicator rail + exhibit",
+      "desc": "Body narrative with right-side KPI indicator rail and bottom bar chart exhibit",
+      "isDark": false,
+      "blank": "Oweleen_T07_Data-Evidence_BLANK.docx",
+      "example": "Oweleen_T07_Data-Evidence_EXAMPLE.docx",
+      "pdf": "Oweleen_T07_Data-Evidence_EXAMPLE.pdf"
+    },
+    {
+      "code": "A4",
+      "set": "Set A: Market Notes",
+      "key": "A4_Distribution-Share-Exhibits",
+      "name": "Distribution + share exhibits",
+      "desc": "Top summary metrics, two-column horizontal bar distribution charts",
+      "isDark": false,
+      "blank": "Oweleen_T07_Data-Evidence_BLANK.docx",
+      "example": "Oweleen_T07_Data-Evidence_EXAMPLE.docx",
+      "pdf": "Oweleen_T07_Data-Evidence_EXAMPLE.pdf"
+    },
+    {
+      "code": "A5",
+      "set": "Set A: Market Notes",
+      "key": "A5_Segment-Analysis-Banded",
+      "name": "Segment analysis + banded exhibit",
+      "desc": "Segment breakdown, horizontal comparative charts, side callout note",
+      "isDark": false,
+      "blank": "Oweleen_T08_Comparison_BLANK.docx",
+      "example": "Oweleen_T08_Comparison_EXAMPLE.docx",
+      "pdf": "Oweleen_T08_Comparison_EXAMPLE.pdf"
+    },
+    {
+      "code": "A6",
+      "set": "Set A: Market Notes",
+      "key": "A6_Contacts-Basis",
+      "name": "Contacts + basis",
+      "desc": "3-column contacts block, methodology/basis notes, dark footer strip",
+      "isDark": false,
+      "blank": "Oweleen_T11_Closing-Contact_BLANK.docx",
+      "example": "Oweleen_T11_Closing-Contact_EXAMPLE.docx",
+      "pdf": "Oweleen_T11_Closing-Contact_EXAMPLE.pdf"
+    },
+    {
+      "code": "B1",
+      "set": "Set B: Strategic Outlook",
+      "key": "B1_Cover",
+      "name": "Cover",
+      "desc": "Vertical corporate layout with title, subtitle, bottom metadata block",
+      "isDark": true,
+      "blank": "Oweleen_T01_Cover_BLANK.docx",
+      "example": "Oweleen_T01_Cover_EXAMPLE.docx",
+      "pdf": "Oweleen_T01_Cover_EXAMPLE.pdf"
+    },
+    {
+      "code": "B2",
+      "set": "Set B: Strategic Outlook",
+      "key": "B2_Contents-Publication-Map",
+      "name": "Contents / publication map",
+      "desc": "Structured numbered index with page indicators, side emphasis note",
+      "isDark": false,
+      "blank": "Oweleen_T02_Contents_BLANK.docx",
+      "example": "Oweleen_T02_Contents_EXAMPLE.docx",
+      "pdf": "Oweleen_T02_Contents_EXAMPLE.pdf"
+    },
+    {
+      "code": "B3",
+      "set": "Set B: Strategic Outlook",
+      "key": "B3_Background-Narrative",
+      "name": "Background narrative",
+      "desc": "Two-column report narrative, full-width bottom skyline image",
+      "isDark": false,
+      "blank": "Oweleen_T03_Executive-Summary_BLANK.docx",
+      "example": "Oweleen_T03_Executive-Summary_EXAMPLE.docx",
+      "pdf": "Oweleen_T03_Executive-Summary_EXAMPLE.pdf"
+    },
+    {
+      "code": "B4",
+      "set": "Set B: Strategic Outlook",
+      "key": "B4_Section-Opener",
+      "name": "Section opener",
+      "desc": "Dark full-bleed breaker page with section title, description, and lower skyline band",
+      "isDark": true,
       "blank": "Oweleen_T10_Section-Divider_BLANK.docx",
       "example": "Oweleen_T10_Section-Divider_EXAMPLE.docx",
       "pdf": "Oweleen_T10_Section-Divider_EXAMPLE.pdf"
     },
     {
-      "key": "T11_Closing-Contact",
-      "name": "Closing / Contact",
+      "code": "B5",
+      "set": "Set B: Strategic Outlook",
+      "key": "B5_Body-Emphasis-Panel",
+      "name": "Body + emphasis panel",
+      "desc": "Main text block paired with an accented beige side emphasis panel",
+      "isDark": false,
+      "blank": "Oweleen_T03_Executive-Summary_BLANK.docx",
+      "example": "Oweleen_T03_Executive-Summary_EXAMPLE.docx",
+      "pdf": "Oweleen_T03_Executive-Summary_EXAMPLE.pdf"
+    },
+    {
+      "code": "B6",
+      "set": "Set B: Strategic Outlook",
+      "key": "B6_Assessment-Matrix-Quote",
+      "name": "Assessment matrix + quote",
+      "desc": "Structured assessment criteria table with a bottom dark quote block",
+      "isDark": false,
+      "blank": "Oweleen_T08_Comparison_BLANK.docx",
+      "example": "Oweleen_T08_Comparison_EXAMPLE.docx",
+      "pdf": "Oweleen_T08_Comparison_EXAMPLE.pdf"
+    },
+    {
+      "code": "B7",
+      "set": "Set B: Strategic Outlook",
+      "key": "B7_Contacts-Governance",
+      "name": "Contacts + governance",
+      "desc": "Sign-off and approvals table, risk disclosures, footer band",
+      "isDark": false,
       "blank": "Oweleen_T11_Closing-Contact_BLANK.docx",
       "example": "Oweleen_T11_Closing-Contact_EXAMPLE.docx",
       "pdf": "Oweleen_T11_Closing-Contact_EXAMPLE.pdf"
+    },
+    {
+      "code": "C1",
+      "set": "Set C: Workflow & Diagrams",
+      "key": "C1_Operating-Map-Current-State",
+      "name": "Operating map / current state",
+      "desc": "Sequential numbered operational swimlane/step map with summary banner",
+      "isDark": false,
+      "blank": "Oweleen_T04_Process_BLANK.docx",
+      "example": "Oweleen_T04_Process_EXAMPLE.docx",
+      "pdf": "Oweleen_T04_Process_EXAMPLE.pdf"
+    },
+    {
+      "code": "C2",
+      "set": "Set C: Workflow & Diagrams",
+      "key": "C2_Transformation-Map",
+      "name": "Transformation map / who performs",
+      "desc": "Comparative table showing traditional vs. AI/automated workflows",
+      "isDark": false,
+      "blank": "Oweleen_T08_Comparison_BLANK.docx",
+      "example": "Oweleen_T08_Comparison_EXAMPLE.docx",
+      "pdf": "Oweleen_T08_Comparison_EXAMPLE.pdf"
+    },
+    {
+      "code": "C3",
+      "set": "Set C: Workflow & Diagrams",
+      "key": "C3_Intelligence-Architecture",
+      "name": "Intelligence architecture",
+      "desc": "Dark-mode system architecture diagram with nodes, tiers, and data flows",
+      "isDark": true,
+      "blank": "Oweleen_T06_Structure_BLANK.docx",
+      "example": "Oweleen_T06_Structure_EXAMPLE.docx",
+      "pdf": "Oweleen_T06_Structure_EXAMPLE.pdf"
     }
   ],
   "master": {

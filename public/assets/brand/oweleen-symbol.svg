@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor">
+  <!-- Oweleen Brandmark: Facing Twin Crescents ( ) -->
+  <g class="oweleen-symbol">
+    <!-- Left Crescent -->
+    <path d="M 44 9 C 23.5 10, 11 27.5, 11 50 C 11 72.5, 23.5 90, 44 91 C 32.5 76, 27.5 64, 27.5 50 C 27.5 36, 32.5 24, 44 9 Z" />
+    <!-- Right Crescent -->
+    <path d="M 56 9 C 76.5 10, 89 27.5, 89 50 C 89 72.5, 76.5 90, 56 91 C 67.5 76, 72.5 64, 72.5 50 C 72.5 36, 67.5 24, 56 9 Z" />
+  </g>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 50" fill="none">
+  <!-- Oweleen Combination Lockup: Symbol (Facing Crescents) + Wordmark (OWELEEN) -->
+  <g class="oweleen-logo-combined" fill="currentColor">
+    <!-- Twin Crescent Symbol -->
+    <g transform="translate(6, 5) scale(0.4)">
+      <!-- Left Crescent -->
+      <path d="M 44 9 C 23.5 10, 11 27.5, 11 50 C 11 72.5, 23.5 90, 44 91 C 32.5 76, 27.5 64, 27.5 50 C 27.5 36, 32.5 24, 44 9 Z" />
+      <!-- Right Crescent -->
+      <path d="M 56 9 C 76.5 10, 89 27.5, 89 50 C 89 72.5, 76.5 90, 56 91 C 67.5 76, 72.5 64, 72.5 50 C 72.5 36, 67.5 24, 56 9 Z" />
+    </g>
+
+    <!-- Wordmark OWELEEN -->
+    <g transform="translate(62, 0)" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <!-- O -->
+      <circle cx="30" cy="25" r="13" />
+      <!-- W -->
+      <polyline points="76,12 84,38 92,19 100,38 108,12" />
+      <!-- E -->
+      <path d="M 164 12 H 144 V 38 H 164 M 144 25 H 161" />
+      <!-- L -->
+      <path d="M 200 12 V 38 H 218" />
+      <!-- E -->
+      <path d="M 274 12 H 254 V 38 H 274 M 254 25 H 271" />
+      <!-- E -->
+      <path d="M 330 12 H 310 V 38 H 330 M 310 25 H 327" />
+      <!-- N -->
+      <path d="M 366 38 V 12 L 388 38 V 12" />
+    </g>
+  </g>
+</svg>

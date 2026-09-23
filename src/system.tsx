@@ -49,19 +49,12 @@ export function IconRing({ name, size = 44, dark = false }: { name: string; size
   );
 }
 
-/* ---------- LOGO ---------- */
+/* ---------- LOGO & BRAND ASSETS ---------- */
+export { default as OweleenLogo, OweleenSymbol, OweleenWordmark } from './OweleenLogo';
+import OweleenLogo, { OweleenSymbol } from './OweleenLogo';
+
 export function Logo({ light = false, size = 1 }: { light?: boolean; size?: number }) {
-  const col = light ? C.ivory : C.midnight;
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 10 * size }}>
-      <svg width={26 * size} height={26 * size} viewBox="0 0 26 26" fill="none">
-        <circle cx="13" cy="13" r="11.5" stroke={col} strokeWidth="1.2" />
-        <circle cx="13" cy="13" r="5" stroke={C.copper} strokeWidth="1.2" />
-        <path d="M13 1.5v6" stroke={C.copper} strokeWidth="1.2" />
-      </svg>
-      <span style={{ fontSize: 13 * size, letterSpacing: '.34em', fontWeight: 500, color: col }}>OWELEEN</span>
-    </div>
-  );
+  return <OweleenLogo variant="full" color={light ? 'light' : 'dark'} size={size} />;
 }
 
 /* ---------- RUNNING HEADER / FOOTER ---------- */
@@ -77,8 +70,22 @@ export function Header({ left = 'Strategic Outlook', right }: { left?: string; r
 export function Footer({ page, light = false }: { page: string; light?: boolean }) {
   const col = light ? C.ivory : C.ink;
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginTop: 'auto' }}>
-      <span className="t-meta" style={{ color: col }}>Oweleen</span>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 'auto' }}>
+      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}>
+        <OweleenSymbol size={12} color={col} />
+        <span
+          style={{
+            letterSpacing: '0.35em',
+            fontWeight: 500,
+            textTransform: 'uppercase',
+            color: col,
+            fontSize: 9.5,
+            fontFamily: 'Figtree, -apple-system, sans-serif',
+          }}
+        >
+          OWELEEN
+        </span>
+      </div>
       <div className="rule" style={{ flex: 1, background: light ? C.ivory : C.slate, opacity: .4 }} />
       <span className="t-meta" style={{ color: light ? C.ivory : C.slate, fontSize: 8 }}>Illustrative Edition / Vol 1.0</span>
       <span className="t-meta" style={{ color: col, fontWeight: 600, marginLeft: 16 }}>{page}</span>

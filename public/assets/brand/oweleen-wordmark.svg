@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 50" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Oweleen Wordmark: Wide-Spaced Geometric Sans-Serif (OWELEEN) -->
+  <g class="oweleen-wordmark">
+    <!-- O -->
+    <circle cx="38" cy="24" r="13.9" />
+    <!-- W -->
+    <polyline points="96,10 104.5,38 113,17 121.5,38 130,10" />
+    <!-- E -->
+    <path d="M 196 10 H 174 V 38 H 196 M 174 24 H 193" />
+    <!-- L -->
+    <path d="M 240 10 V 38 H 260" />
+    <!-- E -->
+    <path d="M 326 10 H 304 V 38 H 326 M 304 24 H 323" />
+    <!-- E -->
+    <path d="M 392 10 H 370 V 38 H 392 M 370 24 H 389" />
+    <!-- N -->
+    <path d="M 436 38 V 10 L 460 38 V 10" />
+  </g>
+</svg>

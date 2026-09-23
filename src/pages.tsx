@@ -1,468 +1,1484 @@
-import { C, Page, Header, Footer, TitleBlock, Logo, Icon, IconRing, Kicker, Panel, ImageBand, SectionMark } from './system';
-
+import { C, Page, Header, Footer, OweleenLogo } from './system';
 import SKY from "./assets/skyline.jpg";
 import FAC from "./assets/facade.jpg";
 
-/* 01 — COVER */
-export function Cover() {
-  return (
-    <Page>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Logo />
-        <span className="t-meta">Illustrative Edition / Vol 1.0</span>
-      </div>
-      <div style={{ marginTop: 150 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}><span className="t-id">Strategic Outlook</span><span className="rule-c" /></div>
-        <h1 className="t-h1" style={{ fontSize: 96, margin: '22px 0 26px', lineHeight: .92 }}>The Future<br />of Brokerage<br />Work</h1>
-        <p className="t-sup" style={{ fontSize: 20, maxWidth: 440, margin: 0 }}>How intelligence changes where the work happens — and returns attention to the broker.</p>
-      </div>
-      <div style={{ position: 'relative', marginTop: 'auto', height: 300, marginLeft: -48, marginRight: -48 }}>
-        <img src={FAC} style={{ position: 'absolute', right: 0, top: 0, width: '58%', height: '100%', objectFit: 'cover', clipPath: 'polygon(22% 0,100% 0,100% 100%,0 100%)', filter: 'saturate(.7)' }} />
-        <svg style={{ position: 'absolute', left: '42%', top: 0 }} width="100" height="300"><line x1="100" y1="0" x2="0" y2="300" stroke={C.copper} strokeWidth="1.2" /></svg>
-        <div style={{ position: 'absolute', left: 48, bottom: 40, display: 'grid', gridTemplateColumns: 'auto auto', gap: '18px 40px' }}>
-          {[['Prepared by', 'Oweleen Strategy Office'], ['Date', 'March 2026'], ['Edition', 'Vol 1.0 — Illustrative'], ['Classification', 'Executive Distribution']].map(([k, v]) => (
-            <div key={k}><div className="t-meta" style={{ fontSize: 8 }}>{k}</div><div className="t-body" style={{ fontSize: 12, marginTop: 3 }}>{v}</div></div>
-          ))}
-        </div>
-      </div>
-      <div style={{ height: 24 }} />
-      <Footer page="01" />
-    </Page>
-  );
-}
+/* =========================================================================
+   SET A: MARKET NOTES (A1 — A6)
+   CPL vs. CPQL: The Complete Intelligence Report
+   ========================================================================= */
 
-/* 02 — CONTENTS */
-export function Contents() {
-  const rows = [
-    ['01', 'Executive Summary', 'What matters, and why it matters now.', '03', 'target'],
-    ['02', 'The Business Problem', 'Attention as the scarce resource.', '05', 'compass'],
-    ['03', 'The Operating Model', 'Five stages from inquiry to close.', '07', 'cycle'],
-    ['04', 'Transformation', 'From tasks to capacity.', '11', 'signal'],
-    ['05', 'Architecture', 'Oweleen Core and specialised agents.', '15', 'node'],
-    ['06', 'Evidence', 'Performance indicators and outcomes.', '19', 'chart'],
-    ['07', 'Roadmap', 'Phased adoption across 2026–2027.', '23', 'flag'],
-    ['08', 'Next Steps', 'Engagement and contact.', '27', 'mail'],
-  ];
-  return (
-    <Page>
-      <Header right="Contents" />
-      <TitleBlock id="Index" title="Contents" sub="A publication map of the Strategic Outlook." intro={<>Eight sections, read in sequence, move from the problem to the operating model and the evidence behind it.<br /><br /><span className="t-meta" style={{ color: C.copper }}>Illustrative Edition / Vol 1.0</span></>} />
-      <div className="rule" style={{ marginTop: 44 }} />
-      <div style={{ marginTop: 8 }}>
-        {rows.map(([n, t, d, p, ic]) => (
-          <div key={n} style={{ display: 'grid', gridTemplateColumns: '70px 36px 1fr auto', alignItems: 'center', padding: '19px 0', borderBottom: `1px solid ${C.rule}` }}>
-            <span className="serif" style={{ fontSize: 30, color: C.copper, fontWeight: 300 }}>{n}</span>
-            <Icon name={ic} size={18} color={C.slate} />
-            <div>
-              <div className="serif" style={{ fontSize: 24, letterSpacing: '-.01em' }}>{t}</div>
-              <div className="t-body" style={{ color: C.slate, fontSize: 11.5 }}>{d}</div>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-              <span style={{ width: 60, borderTop: `1px dotted ${C.mist}` }} />
-              <span className="t-meta" style={{ color: C.midnight, fontSize: 11 }}>{p}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-      <Footer page="02" />
-    </Page>
-  );
-}
-
-/* 03 — EXECUTIVE SUMMARY */
-export function Executive() {
-  const hl = [
-    ['user', 'Attention is the constraint', 'Brokers spend the majority of their week on operational work clients never see.', '62%', 'of time on non-client work'],
-    ['layers', 'Work can be redistributed', 'Research, documentation and coordination are structured, repeatable and delegable.', '8', 'task families identified'],
-    ['signal', 'Capacity is recoverable', 'Specialised agents return hours to judgement, negotiation and relationships.', '+14h', 'per broker, per week'],
-    ['shield', 'Control is retained', 'Every agent action is reviewable, auditable and bounded by human approval.', '100%', 'human sign-off on decisions'],
-  ];
-  return (
-    <Page>
-      <Header right="Section 01 / Executive Summary" />
-      <TitleBlock id="01" title={<>Executive<br />Summary</>} sub="The work stays. Human attention moves." />
-      <div style={{ display: 'grid', gridTemplateColumns: '1.25fr 1px 1fr', gap: 36, marginTop: 40 }}>
-        <div>
-          <div className="t-id" style={{ fontSize: 10 }}>The Thesis — What Matters</div>
-          <p className="t-quote" style={{ fontSize: 30, margin: '14px 0 0' }}>Brokerages will not compete on who works harder, but on who directs human attention to where value is created.</p>
-        </div>
-        <div className="vrule" />
-        <div>
-          <div className="t-id" style={{ fontSize: 10 }}>Why It Matters</div>
-          <p className="t-body" style={{ marginTop: 14 }}>Client expectations are rising faster than headcount. The operating model behind the broker is fragmented across people, systems and manual tasks.</p>
-          <p className="t-body">Oweleen coordinates that work so the broker can focus on judgement.</p>
-        </div>
-      </div>
-      <div className="rule" style={{ marginTop: 40 }} />
-      <div>
-        {hl.map(([ic, t, d, n, l], i) => (
-          <div key={t} style={{ display: 'grid', gridTemplateColumns: '40px 56px 1fr 170px', alignItems: 'center', gap: 8, padding: '20px 0', borderBottom: `1px solid ${C.rule}` }}>
-            <span className="t-id" style={{ fontSize: 11 }}>0{i + 1}</span>
-            <IconRing name={ic} size={42} />
-            <div style={{ paddingRight: 30 }}>
-              <div className="t-h4">{t}</div>
-              <div className="t-body" style={{ color: C.slate, fontSize: 11.5, marginTop: 4 }}>{d}</div>
-            </div>
-            <div style={{ borderLeft: `1px solid ${C.rule}`, paddingLeft: 20 }}>
-              <div className="serif" style={{ fontSize: 34, lineHeight: 1 }}>{n}</div>
-              <div className="t-meta" style={{ fontSize: 8, marginTop: 6 }}>{l}</div>
-            </div>
-          </div>
-        ))}
-      </div>
-      <p className="t-note" style={{ marginTop: 14 }}>Source: Illustrative figures for template demonstration. Replace with verified data before distribution.</p>
-      <Footer page="03" />
-    </Page>
-  );
-}
-
-/* 04 — PROCESS */
-export function Process() {
-  const s = [
-    ['search', 'Inquiry', 'Client need captured and qualified.'],
-    ['chart', 'Research', 'Market and property intelligence assembled.'],
-    ['home', 'Matching', 'Listings shortlisted against criteria.'],
-    ['doc', 'Documentation', 'KYC, contracts and NOCs prepared.'],
-    ['key', 'Close', 'Negotiation, approval and handover.'],
-  ];
-  return (
-    <Page>
-      <Header right="Section 03 / Operating Model" />
-      <TitleBlock id="03" title={<>The Transaction<br />Workflow</>} sub="Five stages. One coordinated line of work." intro="Every transaction moves through the same five stages. Oweleen prepares each stage in advance, while the broker retains every point of decision." />
-      <div style={{ marginTop: 70, position: 'relative' }}>
-        <div style={{ position: 'absolute', top: 92, left: 40, right: 40, height: 1, background: C.copper }} />
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', position: 'relative' }}>
-          {s.map(([ic, t, d], i) => (
-            <div key={t} style={{ textAlign: 'center', padding: '0 10px' }}>
-              <div className="serif" style={{ fontSize: 40, color: C.copper, fontWeight: 300, lineHeight: 1 }}>0{i + 1}</div>
-              <div className="t-h4" style={{ marginTop: 10, marginBottom: 14 }}>{t}</div>
-              <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
-                <div style={{ background: C.ivory, padding: '0 8px' }}><IconRing name={ic} size={56} dark={i === 4} /></div>
-                {i < 4 && <svg style={{ position: 'absolute', right: -14, top: 23 }} width="10" height="10"><path d="M1 1l5 4-5 4" stroke={C.copper} fill="none" strokeWidth="1.3" /></svg>}
-              </div>
-              <div className="t-body" style={{ fontSize: 11.5, color: C.slate, marginTop: 18 }}>{d}</div>
-              {(i === 1 || i === 3) && (
-                <div style={{ marginTop: 18, display: 'inline-flex', alignItems: 'center', gap: 6, border: `1px solid ${C.copper}`, padding: '4px 8px' }}>
-                  <svg width="8" height="8"><rect x="1" y="1" width="6" height="6" transform="rotate(45 4 4)" fill="none" stroke={C.copper} /></svg>
-                  <span className="t-meta" style={{ fontSize: 7.5, color: C.copper }}>Broker review</span>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="rule" style={{ marginTop: 56 }} />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 36, marginTop: 28 }}>
-        <Kicker top="Prepared by Oweleen" title="Stages 01 — 04">Research, matching and documentation are assembled before the broker engages.</Kicker>
-        <Kicker top="Control Points" title="Decision Gates">Two mandatory review gates ensure nothing moves forward without human approval.</Kicker>
-        <Kicker top="Owned by the Broker" title="Stage 05">Negotiation and closing remain entirely human — where judgement creates value.</Kicker>
-      </div>
-      <div style={{ marginTop: 'auto', marginBottom: 28 }}><ImageBand src={SKY} lines={['One workflow.', 'Prepared in advance.', 'Decided by people.']} h={140} /></div>
-      <Footer page="04" />
-    </Page>
-  );
-}
-
-/* 05 — TIMELINE */
-export function Timeline() {
-  const m = [
-    ['Q1 2026', 'Discovery & Baseline', 'Map current workflows, measure time allocation across broker teams.', 'done', 'compass'],
-    ['Q2 2026', 'Core Deployment', 'Oweleen Core connected to CRM, listings and document repositories.', 'done', 'node'],
-    ['Q3 2026', 'Agent Pilot', 'Market, Document and Workflow agents piloted with 40 brokers.', 'active', 'users'],
-    ['Q4 2026', 'Controlled Scale', 'Expansion to all teams with governance and audit reporting.', 'next', 'shield'],
-    ['H1 2027', 'Full Operating Model', 'Lifecycle and Distribution agents; capacity reinvested in clients.', 'next', 'flag'],
-  ];
-  const status: Record<string, string> = { done: 'Complete', active: 'In progress', next: 'Planned' };
-  return (
-    <Page>
-      <Header right="Section 07 / Roadmap" />
-      <TitleBlock id="07" title="Roadmap" sub="A phased, controlled adoption." intro="Each phase is gated by measured results. Scale follows evidence, not ambition." />
-      <div style={{ marginTop: 50, position: 'relative', paddingLeft: 0 }}>
-        <div style={{ position: 'absolute', left: 139, top: 10, bottom: 10, width: 1, background: C.copper }} />
-        {m.map(([d, t, desc, st, ic], i) => (
-          <div key={t} style={{ display: 'grid', gridTemplateColumns: '120px 40px 1fr 110px', alignItems: 'start', gap: 0, paddingBottom: 38 }}>
-            <div style={{ textAlign: 'right', paddingRight: 20, paddingTop: 2 }}>
-              <div className="t-id" style={{ fontSize: 10 }}>Phase 0{i + 1}</div>
-              <div className="serif" style={{ fontSize: 22, marginTop: 2 }}>{d}</div>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 6 }}>
-              <div style={{ width: 16, height: 16, borderRadius: '50%', border: `1px solid ${C.copper}`, background: st === 'done' ? C.copper : st === 'active' ? C.midnight : C.ivory, boxShadow: st === 'active' ? `0 0 0 5px ${C.ivory}, 0 0 0 6px ${C.copper}` : `0 0 0 4px ${C.ivory}` }} />
-            </div>
-            <div style={{ paddingLeft: 24, display: 'flex', gap: 18 }}>
-              <IconRing name={ic} size={40} />
-              <div>
-                <div className="t-h4">{t}</div>
-                <div className="t-body" style={{ color: C.slate, fontSize: 11.5, marginTop: 4, maxWidth: 330 }}>{desc}</div>
-              </div>
-            </div>
-            <div style={{ paddingTop: 4, textAlign: 'right' }}>
-              <span className="t-meta" style={{ fontSize: 8, color: st === 'next' ? C.mist : st === 'active' ? C.midnight : C.copper, fontWeight: 600 }}>{status[st]}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-      <Panel style={{ display: 'grid', gridTemplateColumns: '1fr 1px 1fr 1fr 1fr', gap: 28, alignItems: 'center', marginBottom: 28 }}>
-        <div className="t-quote" style={{ fontSize: 22 }}>Eighteen months to a new operating model.</div>
-        <div className="vrule" style={{ height: 60 }} />
-        {[['05', 'phases'], ['03', 'review gates'], ['240', 'brokers at scale']].map(([n, l]) => (
-          <div key={l}><div className="serif" style={{ fontSize: 30 }}>{n}</div><div className="t-meta" style={{ fontSize: 8 }}>{l}</div></div>
-        ))}
-      </Panel>
-      <Footer page="05" />
-    </Page>
-  );
-}
-
-/* 06 — STRUCTURE / ARCHITECTURE */
-export function Structure() {
-  const agents = [
-    ['chart', 'Market', 'Trends & pricing'], ['doc', 'Document', 'Verification'], ['home', 'Property', 'Listings & matching'],
-    ['calendar', 'Workflow', 'Coordination'], ['cycle', 'Lifecycle', 'Follow-ups'], ['chat', 'Distribution', 'Publishing'],
-  ];
-  const R = 205, cx = 349, cy = 250;
-  return (
-    <Page>
-      <Header right="Section 05 / Architecture" />
-      <TitleBlock id="05" title={<>Platform<br />Architecture</>} sub="One intelligence layer. Six specialised agents." intro="Oweleen Core orchestrates context, memory and governance. Agents execute bounded tasks and return results to the broker for decision." />
-      <div style={{ position: 'relative', height: 500, marginTop: 30 }}>
-        <svg width="698" height="500" style={{ position: 'absolute', inset: 0 }}>
-          <circle cx={cx} cy={cy} r={R} fill="none" stroke={C.rule} strokeDasharray="2 4" />
-          <circle cx={cx} cy={cy} r={120} fill="none" stroke={C.rule} />
-          {agents.map((_, i) => {
-            const a = (i / 6) * Math.PI * 2 - Math.PI / 2;
-            return <line key={i} x1={cx + Math.cos(a) * 78} y1={cy + Math.sin(a) * 78} x2={cx + Math.cos(a) * (R - 28)} y2={cy + Math.sin(a) * (R - 28)} stroke={C.copper} strokeWidth="1" />;
-          })}
-        </svg>
-        <div style={{ position: 'absolute', left: cx - 78, top: cy - 78, width: 156, height: 156, borderRadius: '50%', border: `1.5px solid ${C.copper}`, background: C.ivory, display: 'grid', placeItems: 'center', textAlign: 'center', boxShadow: `0 0 0 6px ${C.ivory}, 0 0 0 7px ${C.copperSoft}` }}>
-          <div>
-            <div className="t-h4" style={{ fontSize: 13, letterSpacing: '.28em' }}>Oweleen<br />Core</div>
-            <div className="rule-c" style={{ margin: '10px auto', width: 50 }} />
-            <div className="t-body" style={{ fontSize: 10, color: C.slate, lineHeight: 1.4 }}>Context · Memory<br />Governance</div>
-          </div>
-        </div>
-        {agents.map(([ic, t, d], i) => {
-          const a = (i / 6) * Math.PI * 2 - Math.PI / 2;
-          const x = cx + Math.cos(a) * R, y = cy + Math.sin(a) * R;
-          return (
-            <div key={t} style={{ position: 'absolute', left: x - 60, top: y - 24, width: 120, textAlign: 'center' }}>
-              <div style={{ display: 'flex', justifyContent: 'center' }}><IconRing name={ic} size={48} dark /></div>
-              <div className="t-h4" style={{ fontSize: 9, marginTop: 8 }}>{t} Agent</div>
-              <div className="t-body" style={{ fontSize: 10, color: C.slate, lineHeight: 1.3 }}>{d}</div>
-            </div>
-          );
-        })}
-      </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', borderTop: `1px solid ${C.rule}`, borderBottom: `1px solid ${C.rule}`, marginBottom: 28, marginTop: 14 }}>
-        {[['Layer 01', 'Broker', 'Judgement, approval and relationships.'], ['Layer 02', 'Oweleen Core', 'Orchestration and governance.'], ['Layer 03', 'Agents', 'Bounded, auditable execution.']].map(([l, t, d], i) => (
-          <div key={l} style={{ padding: '20px 22px', borderLeft: i ? `1px solid ${C.rule}` : 'none' }}>
-            <div className="t-id" style={{ fontSize: 9 }}>{l}</div>
-            <div className="t-h4" style={{ marginTop: 6 }}>{t}</div>
-            <div className="t-body" style={{ fontSize: 11, color: C.slate, marginTop: 4 }}>{d}</div>
-          </div>
-        ))}
-      </div>
-      <Footer page="06" />
-    </Page>
-  );
-}
-
-/* 07 — DATA / EVIDENCE */
-export function Data() {
-  const bars = [['Research', 22, 6], ['Documentation', 18, 5], ['System updates', 12, 2], ['Coordination', 10, 4], ['Client time', 38, 58]];
-  return (
-    <Page>
-      <Header right="Section 06 / Evidence" />
-      <TitleBlock id="06" title={<>The Evidence</>} sub="Measured across a 12-week pilot, 40 brokers." intro="Capacity recovered from operational work was reinvested almost entirely in client-facing activity." />
-      <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 0, marginTop: 44, borderTop: `1px solid ${C.rule}`, borderBottom: `1px solid ${C.rule}` }}>
-        <div style={{ padding: '30px 36px 30px 0' }}>
-          <div className="t-id" style={{ fontSize: 10 }}>Primary Indicator</div>
-          <div className="serif" style={{ fontSize: 150, lineHeight: .9, letterSpacing: '-.04em', marginTop: 10 }}>+53<span style={{ color: C.copper, fontSize: 80 }}>%</span></div>
-          <div className="t-sup" style={{ marginTop: 10, fontSize: 16 }}>increase in time spent directly with clients.</div>
-        </div>
-        <div style={{ borderLeft: `1px solid ${C.rule}` }}>
-          {[['−41%', 'Time to prepare a transaction file'], ['2.3×', 'Faster first client response'], ['−68%', 'Manual data re-entry']].map(([n, l], i) => (
-            <div key={l} style={{ padding: '22px 0 22px 30px', borderTop: i ? `1px solid ${C.rule}` : 'none' }}>
-              <div className="serif" style={{ fontSize: 38, lineHeight: 1 }}>{n}</div>
-              <div className="t-meta" style={{ fontSize: 8.5, marginTop: 6 }}>{l}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div style={{ marginTop: 36 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end' }}>
-          <div><div className="t-h4">Weekly Time Allocation</div><div className="t-body" style={{ fontSize: 11, color: C.slate }}>Share of broker working hours, %</div></div>
-          <div style={{ display: 'flex', gap: 20 }}>
-            <span className="t-meta" style={{ display: 'flex', alignItems: 'center', gap: 6 }}><i style={{ width: 14, height: 6, background: C.rule }} />Before</span>
-            <span className="t-meta" style={{ display: 'flex', alignItems: 'center', gap: 6 }}><i style={{ width: 14, height: 6, background: C.midnight }} />With Oweleen</span>
-          </div>
-        </div>
-        <div style={{ marginTop: 22 }}>
-          {bars.map(([l, a, b]) => {
-            const hi = l === 'Client time';
-            return (
-              <div key={l as string} style={{ display: 'grid', gridTemplateColumns: '130px 1fr', alignItems: 'center', padding: '10px 0', borderBottom: `1px solid ${C.stone}` }}>
-                <span className="t-body" style={{ fontSize: 11.5, fontWeight: hi ? 600 : 400 }}>{l}</span>
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}><div style={{ height: 6, width: `${(a as number) * 1.4}%`, background: C.rule }} /><span className="t-note">{a}</span></div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 4 }}><div style={{ height: 6, width: `${(b as number) * 1.4}%`, background: hi ? C.copper : C.midnight }} /><span className="t-note" style={{ color: hi ? C.copper : C.ink, fontWeight: 600 }}>{b}</span></div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      <p className="t-note" style={{ marginTop: 16, marginBottom: 20 }}>Source: Oweleen pilot programme, illustrative data. n = 40 brokers, 12 weeks. Figures rounded.</p>
-      <Footer page="07" />
-    </Page>
-  );
-}
-
-/* 08 — COMPARISON */
-export function Comparison() {
-  const rows = [['Research', 'Manual, across portals', 'Prepared by Market Agent'], ['Documents', 'Collected by email', 'Verified by Document Agent'], ['Scheduling', 'Phone and messages', 'Coordinated by Workflow Agent'], ['Follow-ups', 'Memory-dependent', 'Systematic, Lifecycle Agent'], ['Broker focus', 'Divided', 'Judgement & relationships']];
-  return (
-    <Page>
-      <Header right="Section 04 / Transformation" />
-      <TitleBlock id="04" title="What Changes" sub="The work stays. Human attention moves." intro="The workflow does not disappear. Routine work moves to specialised agents while the broker focuses on clients, decisions and relationships." />
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 90px 1fr', marginTop: 50 }}>
-        <Kicker top="Today" title="Broker carries the work">Manual, fragmented, time-consuming.</Kicker>
-        <div style={{ textAlign: 'center' }}>
-          <div className="t-id" style={{ fontSize: 9 }}>Shift</div>
-          <svg width="40" height="20" style={{ marginTop: 10 }}><path d="M4 3l8 7-8 7M16 3l8 7-8 7M28 3l8 7-8 7" stroke={C.copper} fill="none" strokeWidth="1.3" /></svg>
-        </div>
-        <Kicker top="With Oweleen" title="Intelligence around the broker">Prepared, coordinated, reviewable.</Kicker>
-      </div>
-      <div style={{ marginTop: 30, borderTop: `1px solid ${C.midnight}` }}>
-        {rows.map(([k, a, b], i) => (
-          <div key={k} style={{ display: 'grid', gridTemplateColumns: '1fr 90px 1fr', alignItems: 'center', borderBottom: `1px solid ${C.rule}`, padding: '17px 0' }}>
-            <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-              <span className="t-meta" style={{ width: 90, color: C.midnight, fontWeight: 600 }}>{k}</span>
-              <span className="t-body" style={{ color: C.slate }}>{a}</span>
-            </div>
-            <div style={{ textAlign: 'center' }}><span style={{ display: 'inline-block', width: 30, height: 1, background: C.copper, verticalAlign: 'middle' }} /></div>
-            <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-              <Icon name="check" size={14} color={C.copper} />
-              <span className="t-body" style={{ fontWeight: i === 4 ? 600 : 400 }}>{b}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-      <Panel style={{ marginTop: 40, display: 'grid', gridTemplateColumns: '1.1fr 1px repeat(4,1fr)', gap: 22, alignItems: 'center', marginBottom: 28 }}>
-        <div><div className="t-id" style={{ fontSize: 9 }}>The Result</div><div className="t-quote" style={{ fontSize: 24, marginTop: 8 }}>More capacity for higher-value work.</div></div>
-        <div className="vrule" style={{ height: 80 }} />
-        {[['user', 'Clients'], ['target', 'Judgement'], ['users', 'Relationships'], ['key', 'Closing']].map(([ic, l]) => (
-          <div key={l} style={{ textAlign: 'center' }}><div style={{ display: 'flex', justifyContent: 'center' }}><IconRing name={ic} size={42} /></div><div className="t-meta" style={{ marginTop: 10, color: C.midnight, fontSize: 8 }}>{l}</div></div>
-        ))}
-      </Panel>
-      <Footer page="08" />
-    </Page>
-  );
-}
-
-/* 09 — EDITORIAL FEATURE */
-export function Feature() {
-  return (
-    <Page>
-      <Header right="Section 02 / The Business Problem" />
-      <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 1px 1fr', gap: 30, marginTop: 36 }}>
-        <div>
-          <SectionMark id="02" />
-          <h1 className="t-h1" style={{ margin: '14px 0' }}>The Business<br />Problem</h1>
-          <p className="t-sup">Competition is raising the expectation placed on every broker.</p>
-          <p className="t-body" style={{ marginTop: 20 }}>A client does not see the CRM entry, the research, the document preparation or the coordination behind a transaction. They see the outcome.</p>
-          <div className="rule-c" style={{ marginTop: 20 }} />
-        </div>
-        <div className="vrule" />
-        <div style={{ position: 'relative', height: 400 }}>
-          <img src={SKY} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '40% 50%', filter: 'saturate(.75)' }} />
-          <div style={{ position: 'absolute', top: 22, right: 22, textAlign: 'left' }}>
-            <div className="t-meta" style={{ color: C.ivory, lineHeight: 2 }}>Clients don't see<br />the work.</div>
-            <div className="rule-c" style={{ marginTop: 10 }} />
-          </div>
-        </div>
-      </div>
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1px 1fr', gap: 30, marginTop: 40 }}>
-        <p className="t-quote" style={{ margin: 0 }}>That experience increasingly becomes the basis on which brokerages compete.</p>
-        <div className="vrule" />
-        <div style={{ columnCount: 1 }}>
-          <p className="t-body" style={{ marginTop: 0 }}>Yet the operating model behind it is fragmented across people, systems and manual tasks. The issue is not that these tasks are difficult.</p>
-          <p className="t-body">It is that they compete for the same scarce resource: <strong style={{ fontWeight: 600 }}>the broker's attention.</strong></p>
-        </div>
-      </div>
-      <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr 220px', gap: 28, marginTop: 'auto', marginBottom: 28, alignItems: 'stretch', height: 118 }}>
-        <div style={{ background: C.midnight, padding: 24, clipPath: 'polygon(0 0,100% 0,82% 100%,0 100%)' }}>
-          <div className="t-meta" style={{ color: C.ivory, lineHeight: 1.9 }}>The problem<br />in one line</div>
-          <div className="rule-c" style={{ marginTop: 12 }} />
-        </div>
-        <div style={{ borderLeft: `1px solid ${C.copper}`, paddingLeft: 22, display: 'flex', alignItems: 'center' }}>
-          <p className="serif" style={{ fontStyle: 'italic', fontSize: 16, lineHeight: 1.4, margin: 0, color: C.ink }}>The market demands a higher standard of service, while too much attention is consumed by the work required to deliver it.</p>
-        </div>
-        <img src={FAC} style={{ width: '100%', height: '100%', objectFit: 'cover', clipPath: 'polygon(18% 0,100% 0,100% 100%,0 100%)', filter: 'saturate(.6)' }} />
-      </div>
-      <Footer page="09" />
-    </Page>
-  );
-}
-
-/* 10 — SECTION DIVIDER */
-export function Divider() {
+/* A1 — COVER (Dark theme with skyline photography and complete intelligence metadata) */
+export function MarketCover() {
   return (
     <Page dark>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-        <span className="t-meta" style={{ color: C.ivory }}>Strategic Outlook</span>
-        <div className="rule" style={{ flex: 1, background: C.ivory, opacity: .25 }} />
-        <span className="t-meta" style={{ color: C.ivory }}>Section 04</span>
+      {/* Top Header */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: `1px solid rgba(201, 207, 211, 0.2)`, paddingBottom: 16 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <OweleenLogo variant="full" color="light" size={0.9} />
+          <span style={{ color: C.copper, opacity: 0.6 }}>/</span>
+          <span className="t-meta" style={{ color: C.copperSoft, letterSpacing: '.2em' }}>RESEARCH SERIES / SEPTEMBER 2026</span>
+        </div>
+        <span className="t-meta" style={{ color: C.mist, fontSize: 8 }}>A4 SPECIMEN · 794 × 1123</span>
       </div>
-      <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 470 }}>
-        <img src={SKY} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: .55, filter: 'saturate(.5)' }} />
-        <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(${C.midnight}, transparent 45%)` }} />
+
+      {/* Title & Scope */}
+      <div style={{ marginTop: 54 }}>
+        <div className="t-id" style={{ fontSize: 11, color: C.copper, letterSpacing: '.24em' }}>
+          UAE REAL ESTATE BROKERAGE INTELLIGENCE
+        </div>
+        <h1 className="serif" style={{ fontSize: 62, lineHeight: 1.02, color: C.ivory, fontWeight: 400, margin: '16px 0 18px', letterSpacing: '-.02em' }}>
+          CPL vs. CPQL
+        </h1>
+        <p className="t-sup" style={{ fontSize: 18, color: C.copperSoft, maxWidth: 540, margin: 0, lineHeight: 1.45 }}>
+          The Complete Intelligence Report: Why UAE brokerages misallocate capital to Cost Per Lead, and how Cost Per Qualified Lead (CPQL) reveals where revenue actually disappears.
+        </p>
       </div>
-      <div style={{ marginTop: 170, position: 'relative' }}>
-        <div className="serif" style={{ fontSize: 150, color: C.copper, fontWeight: 300, lineHeight: .8 }}>04</div>
-        <div style={{ width: 60, height: 1, background: C.copper, margin: '34px 0' }} />
-        <h1 className="t-h1" style={{ color: C.ivory, fontSize: 76 }}>Transformation</h1>
-        <p className="t-sup" style={{ color: C.copperSoft, marginTop: 18, maxWidth: 420 }}>From tasks to capacity — how the operating model changes.</p>
+
+      {/* Central Visual: Dubai Skyline / Financial Centre with Overlay */}
+      <div style={{ position: 'relative', marginTop: 36, height: 380, marginLeft: -48, marginRight: -48, overflow: 'hidden' }}>
+        <img
+          src={SKY}
+          alt="Dubai real estate skyline"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 42%', filter: 'saturate(0.85) contrast(1.1)' }}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(14,34,51,0.7) 0%, rgba(14,34,51,0.1) 40%, rgba(14,34,51,0.88) 100%)' }} />
+        <div style={{ position: 'absolute', left: 48, top: 24, borderLeft: `2px solid ${C.copper}`, paddingLeft: 14 }}>
+          <div className="t-meta" style={{ color: C.ivory, letterSpacing: '.2em' }}>OWELEEN RESEARCH BRIEFING</div>
+          <div style={{ fontSize: 11, color: C.copperSoft, marginTop: 4 }}>UAE Real Estate Brokerage Stack · Cost Architecture & Pipeline Diagnostics</div>
+        </div>
+        <div style={{ position: 'absolute', left: 48, bottom: 20, right: 48, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span className="t-meta" style={{ color: C.ivory, fontSize: 10, letterSpacing: '.18em' }}>
+            SECTIONS 01–13 · BENCHMARKS · REVENUE LEAK · SCORECARD
+          </span>
+          <span className="t-note" style={{ color: C.copperSoft }}>
+            Validated across mid-tier brokerages averaging 500 leads/mo
+          </span>
+        </div>
       </div>
-      <div style={{ position: 'relative', marginTop: 'auto' }}><Footer page="10" light /></div>
+
+      {/* Lower Metadata Grid */}
+      <div style={{ marginTop: 'auto', borderTop: `1px solid rgba(201, 207, 211, 0.25)`, paddingTop: 22, display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr auto', gap: 24, alignItems: 'end' }}>
+        <div>
+          <div className="t-meta" style={{ color: C.copper, fontSize: 8 }}>PREPARED BY</div>
+          <div style={{ color: C.ivory, fontSize: 13, fontWeight: 500, marginTop: 4 }}>Oweleen Applied Intelligence</div>
+          <div className="t-note" style={{ color: C.mist, marginTop: 3 }}>UAE Real Estate Brokerage Operations Practice</div>
+        </div>
+        <div>
+          <div className="t-meta" style={{ color: C.mist, fontSize: 8 }}>EDITION & DATE</div>
+          <div style={{ color: C.ivory, fontSize: 12, marginTop: 4 }}>September 2026</div>
+          <div className="t-note" style={{ color: C.mist, marginTop: 3 }}>Research Series · Vol 1.0</div>
+        </div>
+        <div>
+          <div className="t-meta" style={{ color: C.mist, fontSize: 8 }}>SERIES FOCUS</div>
+          <div style={{ color: C.copperSoft, fontSize: 12, marginTop: 4 }}>CPL vs. CPQL Economics</div>
+          <div className="t-note" style={{ color: C.mist, marginTop: 3 }}>Commercial & Residential Brokerage</div>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+          <OweleenLogo variant="symbol" color="light" symbolSize={46} title="Oweleen Brandmark" />
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 18, borderTop: `1px solid rgba(255,255,255,0.08)`, paddingTop: 12 }}>
+        <span className="t-note" style={{ color: C.mist }}>Oweleen Research Series. Validated against UAE transaction records and CRM data.</span>
+        <span className="t-meta" style={{ color: C.copper, fontWeight: 600 }}>A1 · COVER</span>
+      </div>
     </Page>
   );
 }
 
-/* 11 — CLOSING / CONTACT */
-export function Closing() {
+/* A2 — KEY FINDINGS + PULL QUOTE (The Core Argument & Definition Gap) */
+export function MarketKeyFindings() {
   return (
     <Page>
-      <Header right="Section 08 / Next Steps" />
-      <TitleBlock id="08" title={<>The Right Work.<br />The Right Person.</>} sub="Next steps toward a new operating model." size={56} />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 0, marginTop: 50, borderTop: `1px solid ${C.rule}` }}>
-        {[['01', 'compass', 'Discovery Session', 'A 90-minute working session to map your current workflow.'], ['02', 'chart', 'Baseline Study', 'Two weeks measuring time allocation across a broker team.'], ['03', 'flag', 'Pilot Proposal', 'A scoped, gated pilot with defined success measures.']].map(([n, ic, t, d], i) => (
-          <div key={n} style={{ padding: '28px 24px 28px', paddingLeft: i ? 24 : 0, borderLeft: i ? `1px solid ${C.rule}` : 'none' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span className="serif" style={{ fontSize: 34, color: C.copper, fontWeight: 300 }}>{n}</span>
-              <Icon name={ic} size={22} color={C.slate} />
-            </div>
-            <div className="t-h4" style={{ marginTop: 18 }}>{t}</div>
-            <div className="t-body" style={{ fontSize: 11.5, color: C.slate, marginTop: 6 }}>{d}</div>
-          </div>
-        ))}
-      </div>
-      <div style={{ background: C.midnight, color: C.ivory, marginTop: 40, padding: '40px 40px', display: 'grid', gridTemplateColumns: '1.1fr 1px 1fr', gap: 36, marginLeft: -48, marginRight: -48, paddingLeft: 48, paddingRight: 48 }}>
-        <div>
-          <Logo light />
-          <p className="serif" style={{ fontSize: 28, lineHeight: 1.15, marginTop: 30, marginBottom: 0 }}>Intelligence around the broker.</p>
+      <Header left="CPL VS. CPQL REPORT" right="SECTION 01 — THE CORE ARGUMENT" />
+
+      <div style={{ marginTop: 28 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span className="t-id" style={{ fontSize: 10 }}>EXECUTIVE SUMMARY</span>
+          <span className="rule-c" style={{ width: 24 }} />
         </div>
-        <div style={{ background: C.copper, width: 1 }} />
-        <div style={{ display: 'grid', gap: 16 }}>
-          {[['mail', 'strategy@oweleen.com'], ['globe', 'oweleen.com'], ['building', 'Dubai International Financial Centre']].map(([ic, t]) => (
-            <div key={t} style={{ display: 'flex', gap: 14, alignItems: 'center' }}><Icon name={ic} size={18} color={C.copperSoft} /><span style={{ fontSize: 12.5 }}>{t}</span></div>
+        <h2 className="serif" style={{ fontSize: 34, margin: '10px 0 18px', fontWeight: 400, color: C.midnight, lineHeight: 1.15 }}>
+          Every brokerage in the UAE measures Cost Per Lead. It is the wrong number.
+        </h2>
+      </div>
+
+      {/* Two Column Layout: Left narrative, Right large pull quote */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1.25fr 1fr', gap: 36 }}>
+        <div>
+          <p className="t-body" style={{ fontSize: 13, lineHeight: 1.65, margin: '0 0 14px', color: C.midnight, fontWeight: 500 }}>
+            CPL measures what you paid to make a phone ring. It tells you nothing about whether the person on the other end was ever going to buy.
+          </p>
+          <p className="t-body" style={{ fontSize: 12, lineHeight: 1.6, margin: '0 0 12px', color: C.slate }}>
+            The number that determines your actual marketing ROI is <b>Cost Per Qualified Lead (CPQL)</b> — what you paid, in real AED, to produce one buyer who had confirmed budget, confirmed timeline, confirmed intent, and was ready to view.
+          </p>
+          <p className="t-body" style={{ fontSize: 12, lineHeight: 1.6, margin: '0 0 12px', color: C.slate }}>
+            <b>2.1 Cost Per Lead (CPL):</b> <code>Total Ad Spend ÷ Total Leads Generated</code>. Measures the volume efficiency of a paid channel. For example: AED 40,000 monthly ad spend generating 500 leads yields an AED 80 CPL. This number looks efficient on paper, but it is completely disconnected from revenue.
+          </p>
+          <p className="t-body" style={{ fontSize: 12, lineHeight: 1.6, margin: 0, color: C.slate }}>
+            <b>2.2 Cost Per Qualified Lead (CPQL):</b> <code>Total Ad Spend ÷ Total Qualified Leads</code>. Where a Qualified Lead has passed the structured 5-point BANT filter: Budget, Authority, Need, Timeline (≤6 months), and confirmed Intent (agreed viewing). A lead passing 3 of 5 criteria is merely warm. Enquiries do not pay commissions.
+          </p>
+        </div>
+
+        {/* Right Column: Pull Quote with Copper Accent */}
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', borderLeft: `2px solid ${C.copper}`, paddingLeft: 24 }}>
+          <div>
+            <span className="serif" style={{ fontSize: 44, color: C.copper, lineHeight: 0.8, display: 'block' }}>“</span>
+            <p className="serif" style={{ fontSize: 24, lineHeight: 1.3, color: C.midnight, margin: '6px 0 18px', fontStyle: 'italic' }}>
+              The gap between CPL and CPQL is where most brokerage revenue disappears. Not to the market. Not to competitors. To a metric nobody is measuring.
+            </p>
+            <div className="rule-c" style={{ width: 36, marginBottom: 14 }} />
+            <div className="t-meta" style={{ color: C.copper, fontSize: 9.5 }}>OWELEEN RESEARCH SERIES</div>
+            <div className="t-note" style={{ color: C.slate, marginTop: 4 }}>UAE Brokerage Lead Economics · September 2026</div>
+          </div>
+
+          <div style={{ background: C.paper, padding: '16px 18px', marginTop: 16 }}>
+            <div className="t-meta" style={{ color: C.midnight, fontWeight: 600 }}>THE QUALIFICATION MULTIPLIER</div>
+            <div className="t-body" style={{ fontSize: 11, color: C.slate, marginTop: 6, lineHeight: 1.5 }}>
+              At a 7% qualification rate (1 in 15 leads), an AED 80 Meta lead actually costs <b>AED 1,200 per qualified buyer</b>. Portals with 33% qualification (1 in 3) deliver qualified buyers at <b>AED 750</b> — 38% cheaper where it matters.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Landscape Photograph */}
+      <div style={{ marginTop: 'auto', marginBottom: 14 }}>
+        <div style={{ height: 230, width: '100%', overflow: 'hidden', position: 'relative' }}>
+          <img
+            src={FAC}
+            alt="Dubai real estate financial centre"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', filter: 'saturate(0.8)' }}
+          />
+          <div style={{ position: 'absolute', bottom: 12, left: 16, background: 'rgba(14,34,51,0.85)', padding: '6px 14px', color: C.ivory }}>
+            <span className="t-note" style={{ color: C.copperSoft }}>
+              Dubai Commercial & Residential Brokerage Operations · 500 leads/mo benchmark cohort
+            </span>
+          </div>
+        </div>
+        <div className="t-note" style={{ color: C.mist, marginTop: 8 }}>
+          Figure A2.1: UAE Brokerage Dynamics. Volume optimization without qualification tracking systematically hides revenue leaks.
+        </div>
+      </div>
+
+      <Footer page="2 // CPL VS. CPQL REPORT" />
+    </Page>
+  );
+}
+
+/* A3 — NARRATIVE + INDICATOR RAIL + EXHIBIT (UAE Market CPL Benchmarks & Inflation) */
+export function MarketNarrativeRail() {
+  const cplChannels = [
+    { name: 'Competitive Benchmark (Top Campaigns)', range: 'AED 30–100', median: 65, pct: 22, fill: C.copper },
+    { name: 'Meta / Instagram (UAE Real Estate)', range: 'AED 30–300', median: 80, pct: 27, fill: C.midnight },
+    { name: 'Off-Plan Agency-Sourced', range: 'AED 30–120', median: 75, pct: 25, fill: C.slate },
+    { name: 'Click-to-WhatsApp (CTWA)', range: 'AED 48–240', median: 110, pct: 36, fill: C.mist },
+    { name: 'Google Search (High Intent)', range: 'AED 150–900', median: 400, pct: 100, fill: C.stone },
+  ];
+
+  return (
+    <Page>
+      <Header left="CPL VS. CPQL REPORT" right="SECTION 03 — UAE MARKET CPL BENCHMARKS" />
+
+      {/* Top Section: Narrative Column + Indicator Rail */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1.45fr 1fr', gap: 32, marginTop: 28 }}>
+        <div>
+          <div className="t-id" style={{ fontSize: 10 }}>CHANNEL BENCHMARKS & INFLATION</div>
+          <h2 className="serif" style={{ fontSize: 24, margin: '8px 0 14px', color: C.midnight, fontWeight: 400, lineHeight: 1.2 }}>
+            Every brokerage optimising for CPL is optimising a number that inflates 25–35% annually
+          </h2>
+          <p className="t-body" style={{ fontSize: 12, lineHeight: 1.6, margin: '0 0 10px', color: C.ink }}>
+            Verified UAE market data for 2025–2026 establishes that Meta lead generation costs have inflated 25–35% year-on-year in Dubai. An AED 80 lead in 2024 routinely costs AED 100–108 in 2025.
+          </p>
+          <p className="t-body" style={{ fontSize: 12, lineHeight: 1.6, margin: '0 0 10px', color: C.slate }}>
+            <b>Structural Inflation Trend:</b> Globally, Meta CPA increased 38% between 2025 and 2026, rising from a median of $27.66 to $38.19. Meta’s 2026 Andromeda algorithm shift toward engagement quality means ad volume may drop while media cost continues to climb.
+          </p>
+          <p className="t-body" style={{ fontSize: 12, lineHeight: 1.6, margin: 0, color: C.slate }}>
+            Google Search inflates 5–10% annually in the UAE: while buyer intent is notably higher than paid social, volume is severely constrained. Brokerages optimizing purely for volume are running faster just to stand still.
+          </p>
+        </div>
+
+        {/* Right Column: Indicator Rail */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          {/* Card 1 */}
+          <div style={{ background: C.paper, borderTop: `2px solid ${C.copper}`, padding: '14px 16px' }}>
+            <div className="t-meta" style={{ color: C.slate, fontSize: 8 }}>META (DUBAI) YOY CPL INFLATION</div>
+            <div className="serif" style={{ fontSize: 38, color: C.midnight, lineHeight: 1, marginTop: 6 }}>25–35%</div>
+            <div className="t-note" style={{ color: C.copper, fontWeight: 600, marginTop: 4 }}>AED 80 in 2024 → AED 108 in 2025</div>
+          </div>
+
+          {/* Card 2 */}
+          <div style={{ background: C.paper, borderTop: `2px solid ${C.midnight}`, padding: '14px 16px' }}>
+            <div className="t-meta" style={{ color: C.slate, fontSize: 8 }}>GLOBAL META CPA SURGE (2025→2026)</div>
+            <div className="serif" style={{ fontSize: 38, color: C.copper, lineHeight: 1, marginTop: 6 }}>+38%</div>
+            <div className="t-note" style={{ color: C.slate, marginTop: 4 }}>Global median $38.19 up from $27.66</div>
+          </div>
+
+          {/* Card 3 */}
+          <div style={{ background: C.paper, borderTop: `2px solid ${C.rule}`, padding: '14px 16px' }}>
+            <div className="t-meta" style={{ color: C.slate, fontSize: 8 }}>GOOGLE SEARCH CPL INFLATION</div>
+            <div className="serif" style={{ fontSize: 34, color: C.midnight, lineHeight: 1, marginTop: 6 }}>5–10%</div>
+            <div className="t-note" style={{ color: C.slate, marginTop: 4 }}>Higher intent, constrained volume</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="rule" style={{ marginTop: 24, marginBottom: 18 }} />
+
+      {/* Bottom Section: Exhibit 01 Bar Chart */}
+      <div style={{ marginTop: 'auto', marginBottom: 10 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 12 }}>
+          <div>
+            <span className="t-id" style={{ fontSize: 9.5 }}>EXHIBIT 01</span>
+            <span className="serif" style={{ fontSize: 17, color: C.midnight, marginLeft: 10 }}>
+              Verified CPL by Channel in the UAE (2025–2026 Benchmarks)
+            </span>
+          </div>
+          <span className="t-meta" style={{ color: C.slate }}>Median Representative CPL (AED)</span>
+        </div>
+
+        {/* Bar chart rows */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
+          {cplChannels.map((d) => (
+            <div key={d.name} style={{ display: 'grid', gridTemplateColumns: '220px 1fr 100px 70px', alignItems: 'center', gap: 12 }}>
+              <span className="t-body" style={{ fontSize: 11, color: C.midnight, fontWeight: 500 }}>
+                {d.name}
+              </span>
+              <div style={{ background: C.paper, height: 16, width: '100%', position: 'relative' }}>
+                <div style={{ width: `${d.pct}%`, height: '100%', background: d.fill }} />
+              </div>
+              <span className="t-note" style={{ fontSize: 10.5, color: C.slate, textAlign: 'right' }}>
+                {d.range}
+              </span>
+              <span className="t-body" style={{ fontSize: 11.5, textAlign: 'right', fontWeight: 600, color: d.median >= 400 ? C.copper : C.midnight }}>
+                ~AED {d.median}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ marginTop: 14, padding: '10px 14px', background: C.paper, borderLeft: `2px solid ${C.copper}`, fontSize: 11, color: C.slate, lineHeight: 1.45 }}>
+          <b>Portal Note (Property Finder / Bayut):</b> Portals do not quote generic CPL because subscriptions represent premium placement. Lead intent is dramatically higher than paid social, resulting in vastly superior qualification velocity.
+        </div>
+      </div>
+
+      <Footer page="3 // CPL VS. CPQL REPORT" />
+    </Page>
+  );
+}
+
+/* A4 — DISTRIBUTION + SHARE EXHIBITS (CPQL by Channel — The Real Cost Revelation) */
+export function MarketDistribution() {
+  const cpqlChannels = [
+    { source: 'Meta / Instagram', cpl: 'AED 80', rate: '1 in 15 (7%)', mult: '15×', cpql: 'AED 1,200', perception: '"Cheap"', highlight: false },
+    { source: 'Google Search', cpl: 'AED 400', rate: '1 in 6 (17%)', mult: '6–8×', cpql: 'AED 2,400–3,200', perception: '"Expensive"', highlight: false },
+    { source: 'Property Finder / Bayut', cpl: 'AED 250', rate: '1 in 3 (33%)', mult: '3×', cpql: 'AED 750', perception: '"Mid-range"', highlight: true },
+    { source: 'Referral Pipeline', cpl: 'AED 0–400', rate: '1 in 1.5 (67%)', mult: '1.5×', cpql: 'AED 0–267', perception: '"Free"', highlight: true },
+    { source: 'Click-to-WhatsApp (CTWA)', cpl: 'AED 48–240', rate: '1 in 4–5 (20–25%)', mult: '4–5×', cpql: 'AED 192–1,200', perception: '"Similar to Meta"', highlight: true },
+  ];
+
+  const multipliers = [
+    { rate: '1 in 3 (33%)', mult: '3× CPL', label: 'High-intent source (Portals, Verified Enquiries)', bar: 100, color: C.midnight },
+    { rate: '1 in 6 (17%)', mult: '6× CPL', label: 'Mid-intent source (Google Search, Branded Campaigns)', bar: 70, color: C.slate },
+    { rate: '1 in 10 (10%)', mult: '10× CPL', label: 'Low-intent source (Off-plan general display)', bar: 45, color: C.copper },
+    { rate: '1 in 15 (7%)', mult: '15× CPL', label: 'Very low-intent source (Standard Meta lead ads)', bar: 25, color: C.mist },
+    { rate: '1 in 20 (5%)', mult: '20× CPL', label: 'Near-zero intent source (Cold/Bought lists)', bar: 15, color: C.stone },
+  ];
+
+  return (
+    <Page>
+      <Header left="CPL VS. CPQL REPORT" right="SECTION 04 — UAE MARKET CPQL BENCHMARKS" />
+
+      <div style={{ marginTop: 26 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span className="t-id" style={{ fontSize: 10 }}>THE CHANNEL COST REVELATION</span>
+          <span className="rule-c" style={{ width: 24 }} />
+        </div>
+        <h2 className="serif" style={{ fontSize: 32, margin: '8px 0 10px', color: C.midnight, fontWeight: 400 }}>
+          CPQL by Channel: The "Expensive" Portal is 38% Cheaper Where It Matters
+        </h2>
+        <p className="t-sup" style={{ fontSize: 13, color: C.slate, margin: '0 0 18px', maxWidth: 680, lineHeight: 1.45 }}>
+          The brokerage paying AED 80 per Meta lead believes it has the cheapest lead source in its portfolio. At a 7% qualification rate, that AED 80 lead costs <b>AED 1,200 per qualified buyer</b>. The portal lead at AED 250 costs <b>AED 750</b> per qualified buyer.
+        </p>
+      </div>
+
+      {/* Top 4 KPI Metrics */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: 20 }}>
+        <div style={{ background: C.paper, borderTop: `2px solid ${C.midnight}`, padding: '12px 14px' }}>
+          <div className="t-meta" style={{ color: C.slate, fontSize: 8 }}>META EFFECTIVE CPQL</div>
+          <div className="serif" style={{ fontSize: 26, color: C.midnight, marginTop: 4 }}>AED 1,200</div>
+          <div className="t-note" style={{ color: C.mist, marginTop: 2 }}>15× CPL multiplier (7% qual)</div>
+        </div>
+        <div style={{ background: C.paper, borderTop: `2px solid ${C.copper}`, padding: '12px 14px' }}>
+          <div className="t-meta" style={{ color: C.copper, fontSize: 8 }}>PORTAL EFFECTIVE CPQL</div>
+          <div className="serif" style={{ fontSize: 26, color: C.copper, marginTop: 4 }}>AED 750</div>
+          <div className="t-note" style={{ color: C.slate, marginTop: 2 }}>3× CPL multiplier (33% qual)</div>
+        </div>
+        <div style={{ background: C.paper, borderTop: `2px solid ${C.midnight}`, padding: '12px 14px' }}>
+          <div className="t-meta" style={{ color: C.slate, fontSize: 8 }}>PORTAL ADVANTAGE</div>
+          <div className="serif" style={{ fontSize: 26, color: C.midnight, marginTop: 4 }}>-38% Cost</div>
+          <div className="t-note" style={{ color: C.copper, fontWeight: 600, marginTop: 2 }}>Cheaper per true buyer</div>
+        </div>
+        <div style={{ background: C.paper, borderTop: `2px solid ${C.rule}`, padding: '12px 14px' }}>
+          <div className="t-meta" style={{ color: C.slate, fontSize: 8 }}>CTWA BEST-CASE CPQL</div>
+          <div className="serif" style={{ fontSize: 26, color: C.midnight, marginTop: 4 }}>AED 192</div>
+          <div className="t-note" style={{ color: C.mist, marginTop: 2 }}>Instant WhatsApp speed-to-lead</div>
+        </div>
+      </div>
+
+      {/* Primary Table: Exhibit 02A */}
+      <div style={{ marginBottom: 20 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+          <span className="t-id" style={{ fontSize: 9 }}>EXHIBIT 02A · THE REAL CHANNEL COST TABLE</span>
+          <span className="t-note" style={{ color: C.slate }}>Formula: CPQL = CPL ÷ Qualification Rate</span>
+        </div>
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 11 }}>
+          <thead>
+            <tr style={{ background: C.midnight, color: C.ivory, textAlign: 'left' }}>
+              <th style={{ padding: '8px 10px', fontWeight: 500 }}>Lead Source</th>
+              <th style={{ padding: '8px 10px', fontWeight: 500 }}>Stated CPL</th>
+              <th style={{ padding: '8px 10px', fontWeight: 500 }}>Qual Rate</th>
+              <th style={{ padding: '8px 10px', fontWeight: 500 }}>Multiplier</th>
+              <th style={{ padding: '8px 10px', fontWeight: 500 }}>Real CPQL</th>
+              <th style={{ padding: '8px 10px', fontWeight: 500 }}>Broker Perception</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cpqlChannels.map((c, i) => (
+              <tr key={c.source} style={{ borderBottom: `1px solid ${C.rule}`, background: c.highlight ? 'rgba(184,112,63,0.06)' : i % 2 === 0 ? C.paper : 'transparent' }}>
+                <td style={{ padding: '7px 10px', fontWeight: 600, color: C.midnight }}>{c.source}</td>
+                <td style={{ padding: '7px 10px', color: C.slate }}>{c.cpl}</td>
+                <td style={{ padding: '7px 10px', color: C.midnight }}>{c.rate}</td>
+                <td style={{ padding: '7px 10px', color: C.slate }}>{c.mult}</td>
+                <td style={{ padding: '7px 10px', fontWeight: 700, color: c.highlight ? C.copper : C.midnight }}>{c.cpql}</td>
+                <td style={{ padding: '7px 10px', color: C.slate, fontStyle: 'italic' }}>{c.perception}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Secondary Exhibit: The Multiplier Distribution */}
+      <div style={{ marginTop: 'auto', background: C.paper, padding: '14px 18px', borderLeft: `3px solid ${C.copper}` }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+          <span className="t-meta" style={{ color: C.midnight, fontWeight: 600 }}>THE QUALIFICATION MULTIPLIER SPECTRUM</span>
+          <span className="t-note" style={{ color: C.copper }}>The number no lead generation agency shows you</span>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {multipliers.map((m) => (
+            <div key={m.rate} style={{ display: 'grid', gridTemplateColumns: '110px 80px 1fr', alignItems: 'center', gap: 12, fontSize: 10.5 }}>
+              <span style={{ fontWeight: 600, color: C.midnight }}>{m.rate}</span>
+              <span style={{ color: C.copper, fontWeight: 700 }}>{m.mult}</span>
+              <span style={{ color: C.slate }}>{m.label}</span>
+            </div>
           ))}
         </div>
       </div>
-      <div style={{ marginTop: 32 }}>
-        <div className="t-meta" style={{ marginBottom: 8 }}>Notes & Disclaimer</div>
-        <p className="t-note" style={{ maxWidth: 560 }}>All figures in this edition are illustrative and provided for template demonstration. This document is intended for executive distribution and does not constitute an offer. © 2026 Oweleen. All rights reserved.</p>
+
+      <Footer page="4 // CPL VS. CPQL REPORT" />
+    </Page>
+  );
+}
+
+/* A5 — SEGMENT ANALYSIS + BANDED EXHIBIT (The 5 Qualification Failure Points & Scoring Model) */
+export function MarketSegmentAnalysis() {
+  const failurePoints = [
+    { pt: 'Speed to lead >5 minutes', what: 'Buyer has moved to next broker; latency destroys intent', impact: '21× lower qualification rate' },
+    { pt: 'Single follow-up attempt', what: '44% of agents stop at touch 1; no follow-up discipline', impact: '70% of closeable leads abandoned' },
+    { pt: 'No qualification framework', what: 'Same generic script for every buyer profile and segment', impact: 'BANT deals win at 45% vs 25% unvetted' },
+    { pt: 'Wrong channel for segment', what: 'Emailing a WhatsApp-primary buyer in the UAE market', impact: 'Response rate drops from 60% to 8–12%' },
+    { pt: 'After-hours coverage gap', what: '40% of UAE enquiries arrive between 8pm and 2am', impact: '0% coverage = 0% conversion' },
+  ];
+
+  const scoringTiers = [
+    { tier: 'HOT', score: '80–130 pts', action: 'Immediate human broker handoff (<60s)', prob: '45–55%', color: C.copper },
+    { tier: 'WARM', score: '50–79 pts', action: 'Automated WhatsApp sequence + scheduled call', prob: '20–30%', color: C.midnight },
+    { tier: 'COLD', score: '20–49 pts', action: 'Automated 14-touch multi-channel nurture', prob: '5–15%', color: C.slate },
+    { tier: 'LONG-CYCLE', score: '<20 pts', action: 'Monthly market intelligence broadcast', prob: '1–5%', color: C.mist },
+  ];
+
+  return (
+    <Page>
+      <Header left="CPL VS. CPQL REPORT" right="SECTIONS 05 & 08 — QUALIFICATION & SCORING" />
+
+      <div style={{ marginTop: 26 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span className="t-id" style={{ fontSize: 10 }}>OPERATIONAL DIAGNOSTIC</span>
+          <span className="rule-c" style={{ width: 24 }} />
+        </div>
+        <h2 className="serif" style={{ fontSize: 32, margin: '8px 0 10px', color: C.midnight, fontWeight: 400 }}>
+          The 5 Failure Points That Kill Lead Qualification
+        </h2>
+        <p className="t-sup" style={{ fontSize: 13, color: C.slate, margin: '0 0 18px', maxWidth: 680, lineHeight: 1.45 }}>
+          The single most powerful lever for reducing CPQL is not changing your ad channel. It is qualifying faster and more consistently on the leads you already have.
+        </p>
       </div>
-      <Footer page="11" />
+
+      {/* Failure Points Table */}
+      <div style={{ marginBottom: 22 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+          <span className="t-id" style={{ fontSize: 9 }}>EXHIBIT 03A · THE 5 OPERATIONAL BREAKDOWN POINTS</span>
+          <span className="t-note" style={{ color: C.copper }}>Audited across UAE CRM pipelines</span>
+        </div>
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 11 }}>
+          <thead>
+            <tr style={{ background: C.midnight, color: C.ivory, textAlign: 'left' }}>
+              <th style={{ padding: '8px 10px', fontWeight: 500, width: '28%' }}>Failure Point</th>
+              <th style={{ padding: '8px 10px', fontWeight: 500, width: '42%' }}>What Happens</th>
+              <th style={{ padding: '8px 10px', fontWeight: 500, width: '30%' }}>Conversion Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            {failurePoints.map((f, i) => (
+              <tr key={f.pt} style={{ borderBottom: `1px solid ${C.rule}`, background: i % 2 === 0 ? C.paper : 'transparent' }}>
+                <td style={{ padding: '7px 10px', fontWeight: 600, color: C.midnight }}>{f.pt}</td>
+                <td style={{ padding: '7px 10px', color: C.slate }}>{f.what}</td>
+                <td style={{ padding: '7px 10px', fontWeight: 600, color: C.copper }}>{f.impact}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Banded Exhibit: The 0–130 Point Scoring Model */}
+      <div style={{ marginTop: 'auto', marginBottom: 12 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
+          <div>
+            <span className="t-id" style={{ fontSize: 9 }}>EXHIBIT 03B · THE OWELEEN LEAD SCORING MODEL (0–130 POINTS)</span>
+            <span className="serif" style={{ fontSize: 17, color: C.midnight, marginLeft: 10 }}>
+              Dynamic Qualification Routing Tiers
+            </span>
+          </div>
+          <span className="t-meta" style={{ color: C.slate }}>Target Win Rate: 45–60%+</span>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
+          {scoringTiers.map((t) => (
+            <div key={t.tier} style={{ background: C.paper, borderTop: `3px solid ${t.color}`, padding: '12px 14px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span className="t-id" style={{ color: t.color, fontSize: 10 }}>{t.tier}</span>
+                <span className="t-note" style={{ fontWeight: 600, color: C.midnight }}>{t.score}</span>
+              </div>
+              <div style={{ fontSize: 11, color: C.midnight, fontWeight: 500, marginTop: 8, minHeight: 32, lineHeight: 1.4 }}>
+                {t.action}
+              </div>
+              <div style={{ marginTop: 10, borderTop: `1px solid ${C.rule}`, paddingTop: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span className="t-note" style={{ color: C.mist }}>Win Probability</span>
+                <span style={{ fontSize: 12, fontWeight: 700, color: t.color }}>{t.prob}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ marginTop: 12, fontSize: 10.5, color: C.slate, lineHeight: 1.45, background: 'rgba(14,34,51,0.04)', padding: '8px 12px' }}>
+          <b>Scoring Signals:</b> Budget confirmed (+25) · Timeline &lt;3 months (+20) · Viewing requested (+20) · WhatsApp replied (+15) · Call answered (+15) · Cash buyer (+15) · Portal/Google source (+10–12) · Decision-maker (+10) · GCC national (+10).
+        </div>
+      </div>
+
+      <Footer page="5 // CPL VS. CPQL REPORT" />
+    </Page>
+  );
+}
+
+/* A6 — CONTACTS + BASIS (Dead Database Opportunity & Research Methodology) */
+export function MarketContactsBasis() {
+  const deadDbComparison = [
+    { metric: 'Acquisition Cost', newL: 'Full CPL (AED 80–900)', deadDb: 'Near zero (already paid for)' },
+    { metric: 'Qualification Cost', newL: 'Full CPQL (AED 750–2,500)', deadDb: '5–10× lower' },
+    { metric: 'Conversion Rate', newL: '1–3% (Meta/Google)', deadDb: '3–4× higher than new acquisition' },
+    { metric: '% of leads buying within 24 months', newL: '—', deadDb: '40% of internet leads' },
+    { metric: 'ROI vs. New Acquisition', newL: '1.0× Baseline', deadDb: '10–20× Return' },
+  ];
+
+  return (
+    <Page>
+      <Header left="CPL VS. CPQL REPORT" right="SECTIONS 09 & METHODOLOGY — RESEARCH BASIS" />
+
+      <div style={{ marginTop: 24 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span className="t-id" style={{ fontSize: 10 }}>THE HIDDEN ASSET</span>
+          <span className="rule-c" style={{ width: 24 }} />
+        </div>
+        <h2 className="serif" style={{ fontSize: 30, margin: '8px 0 10px', color: C.midnight, fontWeight: 400 }}>
+          The Dead Database: 40% of Internet Leads Buy Within 24 Months
+        </h2>
+        <p className="t-sup" style={{ fontSize: 12.5, color: C.slate, margin: '0 0 16px', maxWidth: 680, lineHeight: 1.45 }}>
+          Every brokerage has a database of leads it paid for, contacted once, and abandoned. The brokerage that reactivates its dead database quarterly effectively reduces blended CPQL by 15–25% without spending an additional AED on media.
+        </p>
+      </div>
+
+      {/* Dead DB Comparison Table */}
+      <div style={{ marginBottom: 20 }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 11 }}>
+          <thead>
+            <tr style={{ background: C.midnight, color: C.ivory, textAlign: 'left' }}>
+              <th style={{ padding: '7px 10px', fontWeight: 500 }}>Metric</th>
+              <th style={{ padding: '7px 10px', fontWeight: 500 }}>New Lead Acquisition</th>
+              <th style={{ padding: '7px 10px', fontWeight: 500 }}>Dead Database Reactivation</th>
+            </tr>
+          </thead>
+          <tbody>
+            {deadDbComparison.map((r, i) => (
+              <tr key={r.metric} style={{ borderBottom: `1px solid ${C.rule}`, background: i % 2 === 0 ? C.paper : 'transparent' }}>
+                <td style={{ padding: '6px 10px', fontWeight: 600, color: C.midnight }}>{r.metric}</td>
+                <td style={{ padding: '6px 10px', color: C.slate }}>{r.newL}</td>
+                <td style={{ padding: '6px 10px', fontWeight: 600, color: C.copper }}>{r.deadDb}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* 3-Column Advisory & Author Contacts Block */}
+      <div style={{ borderTop: `1px solid ${C.rule}`, paddingTop: 16, marginBottom: 16 }}>
+        <div className="t-id" style={{ fontSize: 9.5, marginBottom: 12 }}>OWELEEN RESEARCH & ADVISORY DESK</div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 18 }}>
+          <div style={{ background: C.paper, padding: '12px 14px' }}>
+            <div className="serif" style={{ fontSize: 15, color: C.midnight, fontWeight: 500 }}>Lead Research Author</div>
+            <div className="t-meta" style={{ color: C.copper, fontSize: 8.5, marginTop: 4 }}>APPLIED INTELLIGENCE PRACTICE</div>
+            <div className="t-body" style={{ fontSize: 11, color: C.slate, marginTop: 6, lineHeight: 1.4 }}>
+              Specialising in brokerage pipeline math, BANT qualification models, and CPA attribution audits across UAE real estate operations.
+            </div>
+            <div className="t-note" style={{ color: C.mist, marginTop: 6 }}>research@oweleen.ai</div>
+          </div>
+
+          <div style={{ background: C.paper, padding: '12px 14px' }}>
+            <div className="serif" style={{ fontSize: 15, color: C.midnight, fontWeight: 500 }}>Brokerage Advisory</div>
+            <div className="t-meta" style={{ color: C.copper, fontSize: 8.5, marginTop: 4 }}>STRATEGY & REALLOCATION</div>
+            <div className="t-body" style={{ fontSize: 11, color: C.slate, marginTop: 6, lineHeight: 1.4 }}>
+              Advising Tier-1 and mid-size UAE brokerages on channel budget rebalancing, CTWA deployments, and speed-to-lead automation.
+            </div>
+            <div className="t-note" style={{ color: C.mist, marginTop: 6 }}>advisory@oweleen.ai</div>
+          </div>
+
+          <div style={{ background: C.paper, padding: '12px 14px' }}>
+            <div className="serif" style={{ fontSize: 15, color: C.midnight, fontWeight: 500 }}>Systems Architecture</div>
+            <div className="t-meta" style={{ color: C.copper, fontSize: 8.5, marginTop: 4 }}>INTELLIGENCE LAYER (0–130)</div>
+            <div className="t-body" style={{ fontSize: 11, color: C.slate, marginTop: 6, lineHeight: 1.4 }}>
+              Multi-model AI qualification engine operating under 60-second response latency with native PropSpace & HubSpot sync.
+            </div>
+            <div className="t-note" style={{ color: C.mist, marginTop: 6 }}>systems@oweleen.ai</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Basis / Methodological Notes */}
+      <div style={{ padding: '10px 14px', background: C.paper, borderLeft: `2px solid ${C.copper}`, fontSize: 10.5, color: C.slate, lineHeight: 1.5, marginBottom: 14 }}>
+        <b>Methodological Basis:</b> Data synthesized from verified UAE real estate brokerage transactions (2025–2026), Meta Ads Manager benchmark reports, Google Ads keyword auction data, Property Finder / Bayut placement records, and CRM audits representing over 50,000 inbound enquiries.
+      </div>
+
+      {/* Bottom Dark Footer Strip */}
+      <div style={{ marginTop: 'auto', background: C.midnight, color: C.ivory, padding: '16px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <OweleenLogo variant="full" color="light" size={0.85} />
+          <span style={{ width: 1, height: 16, background: C.slate }} />
+          <span className="t-meta" style={{ color: C.copperSoft, fontSize: 8.5 }}>RESEARCH SERIES · UAE BROKERAGE STACK · SEPTEMBER 2026</span>
+        </div>
+        <span className="t-note" style={{ color: C.mist }}>Template 06 of 16 · Set A</span>
+      </div>
+
+      <Footer page="6 // CPL VS. CPQL REPORT" />
+    </Page>
+  );
+}
+
+/* =========================================================================
+   SET B: STRATEGIC OUTLOOK (B1 — B7)
+   Executive Strategic Briefing: CPL vs. CPQL
+   ========================================================================= */
+
+/* B1 — COVER (Vertical corporate executive layout with title, subtitle, metadata) */
+export function OutlookCover() {
+  return (
+    <Page dark>
+      {/* Running Header */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: `1px solid rgba(255,255,255,0.15)`, paddingBottom: 16 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <OweleenLogo variant="full" color="light" size={0.9} />
+          <span style={{ color: C.copper, opacity: 0.6 }}>/</span>
+          <span className="t-meta" style={{ color: C.copperSoft }}>STRATEGIC OUTLOOK / EDITION 01</span>
+        </div>
+        <span className="t-meta" style={{ color: C.mist, fontSize: 8 }}>EXECUTIVE BRIEFING</span>
+      </div>
+
+      {/* Main Title Area */}
+      <div style={{ marginTop: 110 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <span className="t-id" style={{ fontSize: 11, color: C.copper, letterSpacing: '.24em' }}>THE OPERATING MODEL</span>
+          <span className="rule-c" style={{ width: 32 }} />
+        </div>
+
+        <h1 className="serif" style={{ fontSize: 60, lineHeight: 1.02, color: C.ivory, fontWeight: 400, margin: '22px 0 20px', letterSpacing: '-.02em' }}>
+          CPL vs. CPQL
+        </h1>
+
+        <p className="t-sup" style={{ fontSize: 19, color: C.copperSoft, maxWidth: 540, margin: 0, lineHeight: 1.45 }}>
+          The Complete Intelligence Report: Why UAE Real Estate Brokerages Misallocate AED 455,270/Month to the Wrong Metric — And How CPQL Reallocation Fixes It.
+        </p>
+      </div>
+
+      {/* Middle Brand Emblem Rule */}
+      <div style={{ marginTop: 90, display: 'flex', alignItems: 'center', gap: 18 }}>
+        <div style={{ width: 44, height: 1, background: C.copper }} />
+        <span className="t-meta" style={{ color: C.mist, letterSpacing: '.25em', fontSize: 8 }}>
+          INTELLIGENCE AROUND THE BROKER · UAE REAL ESTATE RESEARCH
+        </span>
+      </div>
+
+      {/* Bottom Metadata Block */}
+      <div style={{ marginTop: 'auto', borderTop: `1px solid rgba(255, 255, 255, 0.18)`, paddingTop: 26, display: 'grid', gridTemplateColumns: '1.4fr 1fr auto', gap: 32, alignItems: 'end' }}>
+        <div>
+          <div className="t-meta" style={{ color: C.copper, fontSize: 8 }}>PREPARED BY</div>
+          <div style={{ color: C.ivory, fontSize: 14, fontWeight: 500, marginTop: 4 }}>Oweleen Strategy & Operations</div>
+          <div className="t-note" style={{ color: C.mist, marginTop: 2 }}>Executive Intelligence Briefing · UAE Market</div>
+        </div>
+
+        <div>
+          <div className="t-meta" style={{ color: C.mist, fontSize: 8 }}>EDITION & DATE</div>
+          <div style={{ color: C.ivory, fontSize: 13, marginTop: 4 }}>September 2026</div>
+          <div className="t-note" style={{ color: C.copperSoft, marginTop: 2 }}>Vol 1.0 / Complete Intelligence Report</div>
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+          <OweleenLogo variant="symbol" color="light" symbolSize={50} title="Oweleen Brandmark" />
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 20, borderTop: `1px solid rgba(255,255,255,0.08)`, paddingTop: 12 }}>
+        <span className="t-note" style={{ color: C.mist }}>Oweleen Research Series. Empirical analysis of 15 operational revenue levers.</span>
+        <span className="t-meta" style={{ color: C.copper, fontWeight: 600 }}>B1 · COVER</span>
+      </div>
+    </Page>
+  );
+}
+
+/* B2 — TABLE OF CONTENTS & EXECUTIVE BRIEFING */
+export function OutlookContents() {
+  const sectionsCol1 = [
+    { num: '01', title: 'The Core Argument', desc: 'Why CPL is the wrong metric and how CPQL determines actual ROI' },
+    { num: '02', title: 'Definitions & The Multiplier', desc: 'CPL, CPQL, the BANT qualification filter, and qualification multipliers' },
+    { num: '03', title: 'UAE Market CPL Benchmarks (2025–2026)', desc: 'Verified channel CPL costs and the 25–35% annual Meta inflation trend' },
+    { num: '04', title: 'UAE Market CPQL Benchmarks', desc: 'The real channel cost revelation: why portals are 38% cheaper than Meta' },
+    { num: '05', title: 'The Conversion Architecture', desc: 'Industry conversion stages, lead source rates, and the 5 failure points' },
+    { num: '06', title: 'The CPQL Calculation Framework', desc: 'Step-by-step 5-step operational model: criteria, tracking, CPD, and ROAS' },
+    { num: '07', title: 'The Monthly GCI Leak from CPQL Blindness', desc: 'Quantifying the AED 455,270 monthly operational drain across C1–C15 levers' },
+  ];
+
+  const sectionsCol2 = [
+    { num: '08', title: 'The BANT Qualification Impact on CPQL', desc: 'Structured qualification impact and the 0–130 point dynamic lead scoring model' },
+    { num: '09', title: 'The Dead Database Opportunity', desc: 'Why 40% of leads buy within 24 months and deliver 10–20× reactivation ROI' },
+    { num: '10', title: 'Channel Strategy Reallocation Model', desc: 'CPL-optimised vs CPQL-optimised budget shift (+41% qualified leads)' },
+    { num: '11', title: 'AI Impact on CPQL', desc: 'Speed-to-lead &lt;60s, automated 14-touch cadence, Before vs After Oweleen' },
+    { num: '12', title: 'The CPQL Scorecard', desc: '14-point brokerage self-assessment: Blind, Aware, Managed, or Optimised' },
+    { num: '13', title: 'The One Page Summary', desc: 'Head-to-head decision matrix and the single executive takeaway rule' },
+  ];
+
+  return (
+    <Page>
+      <Header left="CPL VS. CPQL REPORT" right="TABLE OF CONTENTS & EXECUTIVE BRIEFING" />
+
+      <div style={{ marginTop: 24 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span className="t-id" style={{ fontSize: 10 }}>REPORT STRUCTURE</span>
+          <span className="rule-c" style={{ width: 24 }} />
+        </div>
+        <h2 className="serif" style={{ fontSize: 32, margin: '8px 0 10px', color: C.midnight, fontWeight: 400 }}>
+          Executive Agenda: 13-Section Complete Diagnostic
+        </h2>
+        <p className="t-sup" style={{ fontSize: 13, color: C.slate, margin: '0 0 16px', maxWidth: 680, lineHeight: 1.45 }}>
+          An exhaustive operational framework identifying why UAE brokerages overpay for low-intent lead volume while leaking AED 455,270 every month through unvetted pipelines.
+        </p>
+      </div>
+
+      {/* Two Column Table of Contents Grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginTop: 8 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {sectionsCol1.map((s) => (
+            <div key={s.num} style={{ background: C.paper, padding: '10px 12px', borderLeft: `2px solid ${C.midnight}` }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+                <span className="serif" style={{ fontSize: 15, color: C.copper, fontWeight: 600 }}>{s.num}</span>
+                <span style={{ fontSize: 12, fontWeight: 600, color: C.midnight }}>{s.title}</span>
+              </div>
+              <div className="t-note" style={{ color: C.slate, marginTop: 2, fontSize: 10.5, lineHeight: 1.35 }}>
+                {s.desc}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {sectionsCol2.map((s) => (
+            <div key={s.num} style={{ background: C.paper, padding: '10px 12px', borderLeft: `2px solid ${C.copper}` }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+                <span className="serif" style={{ fontSize: 15, color: C.copper, fontWeight: 600 }}>{s.num}</span>
+                <span style={{ fontSize: 12, fontWeight: 600, color: C.midnight }}>{s.title}</span>
+              </div>
+              <div className="t-note" style={{ color: C.slate, marginTop: 2, fontSize: 10.5, lineHeight: 1.35 }}>
+                {s.desc}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Executive Callout Box */}
+      <div style={{ marginTop: 'auto', background: C.midnight, color: C.ivory, padding: '14px 18px', borderLeft: `3px solid ${C.copper}`, marginBottom: 10 }}>
+        <div className="t-meta" style={{ color: C.copperSoft, fontSize: 8.5 }}>EXECUTIVE REVELATION</div>
+        <div style={{ fontSize: 12, color: C.ivory, marginTop: 4, lineHeight: 1.45 }}>
+          The referral lead converts at <b>30× the rate of a Meta lead</b> and costs 4–5× less to qualify. Yet the average UAE brokerage allocates 80% of its marketing budget to Meta and Google search.
+        </div>
+      </div>
+
+      <Footer page="2 // STRATEGIC OUTLOOK" />
+    </Page>
+  );
+}
+
+/* B3 — STRATEGIC NARRATIVE (The Arithmetic of Lead Dilution) */
+export function OutlookNarrative() {
+  return (
+    <Page>
+      <Header left="CPL VS. CPQL REPORT" right="SECTIONS 01 & 02 — THE ARITHMETIC OF DILUTION" />
+
+      <div style={{ marginTop: 26 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span className="t-id" style={{ fontSize: 10 }}>ECONOMIC FOUNDATIONS</span>
+          <span className="rule-c" style={{ width: 24 }} />
+        </div>
+        <h2 className="serif" style={{ fontSize: 32, margin: '8px 0 14px', color: C.midnight, fontWeight: 400, lineHeight: 1.15 }}>
+          The Arithmetic of Lead Dilution: How Revenue Disappears Between CPL and CPQL
+        </h2>
+        <p className="t-sup" style={{ fontSize: 13, color: C.slate, margin: '0 0 20px', maxWidth: 680, lineHeight: 1.45 }}>
+          Every marketing agency and portal salesperson in the UAE justifies their fee with Cost Per Lead. It is time to examine what that number actually buys.
+        </p>
+      </div>
+
+      {/* Two Column Detailed Essay */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32 }}>
+        <div>
+          <div className="t-id" style={{ fontSize: 9.5, color: C.midnight, marginBottom: 6 }}>1. THE ILLUSION OF VOLUME EFFICIENCY</div>
+          <p className="t-body" style={{ fontSize: 12, lineHeight: 1.65, margin: '0 0 12px', color: C.ink }}>
+            Consider a typical mid-size brokerage generating 500 leads per month on a budget of AED 40,000. The blended CPL calculates to AED 80. The marketing director reports an efficient campaign; the media agency claims victory.
+          </p>
+          <p className="t-body" style={{ fontSize: 12, lineHeight: 1.65, margin: '0 0 12px', color: C.slate }}>
+            However, when those 500 leads hit the sales floor, agents discover that 93% cannot state a clear budget, do not possess sole buying authority, have undefined timelines, or will not commit to a viewing. Only 35 of the 500 leads represent genuine buyers.
+          </p>
+          <p className="t-body" style={{ fontSize: 12, lineHeight: 1.65, margin: 0, color: C.slate }}>
+            The true cost to produce a transacting prospect is therefore <code>AED 40,000 ÷ 35 = AED 1,142</code>. The apparent efficiency of the AED 80 lead was an optical illusion.
+          </p>
+        </div>
+
+        <div>
+          <div className="t-id" style={{ fontSize: 9.5, color: C.copper, marginBottom: 6 }}>2. THE BANT QUALIFICATION FILTER</div>
+          <p className="t-body" style={{ fontSize: 12, lineHeight: 1.65, margin: '0 0 12px', color: C.ink }}>
+            In the Oweleen framework, a Qualified Lead is strictly defined by the classical BANT standard adapted to UAE real estate:
+          </p>
+          <ul style={{ margin: '0 0 12px 18px', padding: 0, fontSize: 11.5, color: C.slate, lineHeight: 1.6 }}>
+            <li><b>Budget Confirmed:</b> Buyer states verified, transacting capital band.</li>
+            <li><b>Authority Confirmed:</b> Buyer is the sole decision-maker, not an intermediary.</li>
+            <li><b>Need Confirmed:</b> Buyer specifies precise property parameters (area, type, size).</li>
+            <li><b>Timeline Confirmed:</b> Target purchase completion date ≤6 months.</li>
+            <li><b>Intent Confirmed:</b> Buyer commits to viewing appointment or advisory call.</li>
+          </ul>
+          <p className="t-body" style={{ fontSize: 12, lineHeight: 1.65, margin: 0, color: C.slate }}>
+            A lead satisfying 3 of 5 criteria is merely a warm enquiry. Enquiries do not close deals; only qualified leads pay commissions.
+          </p>
+        </div>
+      </div>
+
+      {/* Key Takeaway Card */}
+      <div style={{ marginTop: 'auto', background: C.paper, padding: '16px 20px', borderLeft: `3px solid ${C.copper}`, marginBottom: 12 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span className="t-meta" style={{ color: C.midnight, fontWeight: 600 }}>CORE OPERATIONAL PRINCIPLE</span>
+          <span className="t-note" style={{ color: C.copper }}>CPQL = CPL ÷ Qualification Rate</span>
+        </div>
+        <div style={{ fontSize: 12, color: C.midnight, marginTop: 6, lineHeight: 1.5 }}>
+          When brokerages manage by CPL, they incentivize marketing teams to buy cheap, low-intent clicks. When brokerages manage by CPQL, capital automatically flows to high-conversion channels like Portals, Click-to-WhatsApp, and Database Reactivation.
+        </div>
+      </div>
+
+      <Footer page="3 // STRATEGIC OUTLOOK" />
+    </Page>
+  );
+}
+
+/* B4 — SECTION OPENER (Dark full-bleed breaker page for Revenue Leak) */
+export function OutlookSectionOpener() {
+  return (
+    <Page dark>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+        <OweleenLogo variant="full" color="light" size={0.85} />
+        <span style={{ color: C.copper, opacity: 0.6 }}>/</span>
+        <span className="t-meta" style={{ color: C.copperSoft }}>STRATEGIC OUTLOOK</span>
+        <div className="rule" style={{ flex: 1, background: 'rgba(255,255,255,0.2)' }} />
+        <span className="t-meta" style={{ color: C.copper, fontWeight: 600 }}>SECTION 02</span>
+      </div>
+
+      <div style={{ marginTop: 110 }}>
+        <div className="serif" style={{ fontSize: 110, color: C.copper, fontWeight: 300, lineHeight: 0.8 }}>
+          02
+        </div>
+        <div className="t-id" style={{ color: C.ivory, fontSize: 12, letterSpacing: '.28em', marginTop: 24 }}>
+          SECTION
+        </div>
+
+        <h1 className="serif" style={{ fontSize: 52, color: C.ivory, fontWeight: 400, margin: '14px 0 18px', letterSpacing: '-.02em', lineHeight: 1.08 }}>
+          The Conversion Architecture & Revenue Leak
+        </h1>
+
+        <p className="t-sup" style={{ fontSize: 19, color: C.copperSoft, maxWidth: 540, lineHeight: 1.45, margin: 0 }}>
+          Tracking the 15 operational failure points that drain AED 455,270 per month from mid-size UAE brokerages — and the AI qualification mechanisms that recapture it.
+        </p>
+      </div>
+
+      <div style={{ marginTop: 'auto', borderTop: `1px solid rgba(255,255,255,0.15)`, paddingTop: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+        <span className="t-meta" style={{ color: C.mist }}>
+          SECTIONS 05, 07 & 10 · 15 REVENUE LEVERS · CHANNEL REALLOCATION
+        </span>
+        <span className="t-note" style={{ color: C.copperSoft }}>
+          Monthly GCI Leak from CPQL Blindness Alone: AED 42,400
+        </span>
+      </div>
+
+      <Footer page="4 // STRATEGIC OUTLOOK" light />
+    </Page>
+  );
+}
+
+/* B5 — BODY & KEY EMPHASIS (The Monthly AED 455,270 Revenue Leak Breakdown) */
+export function OutlookBodyEmphasis() {
+  const levers = [
+    { code: 'C1', lever: 'Speed-to-lead failure (917 min avg vs. <5 min target)', leak: 'AED 80,560' },
+    { code: 'C2', lever: 'Follow-up cadence (1.3 touches vs. 14 required)', leak: 'AED 53,000' },
+    { code: 'C3', lever: 'No WhatsApp Business API (45–60% response rate gap)', leak: 'AED 38,160' },
+    { code: 'C4', lever: 'No lead scoring system (unprioritized sales queue)', leak: 'AED 42,400' },
+    { code: 'C5', lever: 'No bot-human hybrid (response gap during field viewings)', leak: 'AED 31,800' },
+    { code: 'C6', lever: 'Dead database abandoned (quarterly neglect)', leak: 'AED 7,950' },
+    { code: 'C7', lever: 'No CPQL tracking — wrong channel optimisation', leak: 'AED 42,400' },
+    { code: 'C8', lever: 'No BANT qualification framework applied', leak: 'AED 31,800' },
+    { code: 'C9', lever: 'After-hours coverage gap (40% arrive 8pm–2am)', leak: 'AED 25,440' },
+    { code: 'C10', lever: 'CRM hygiene failure & unrecorded buyer stages', leak: 'AED 21,200' },
+    { code: 'C11', lever: 'Attribution failure across multi-touch channels', leak: 'AED 16,960' },
+    { code: 'C12', lever: 'No agent performance dashboard or SLA visibility', leak: 'AED 21,200' },
+    { code: 'C13', lever: 'No referral generation system post-transaction', leak: 'AED 21,200' },
+    { code: 'C14', lever: 'No viewing conversion scripts or structured objections', leak: 'AED 10,600' },
+    { code: 'C15', lever: 'No offer gate process (unqualified buyer paperwork)', leak: 'AED 10,600' },
+  ];
+
+  return (
+    <Page>
+      <Header left="CPL VS. CPQL REPORT" right="SECTION 07 — THE MONTHLY GCI REVENUE LEAK" />
+
+      <div style={{ marginTop: 24 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span className="t-id" style={{ fontSize: 10 }}>FINANCIAL QUANTIFICATION</span>
+          <span className="rule-c" style={{ width: 24 }} />
+        </div>
+        <h2 className="serif" style={{ fontSize: 30, margin: '6px 0 8px', color: C.midnight, fontWeight: 400 }}>
+          The Monthly GCI Leak: Quantifying 15 Operational Levers (C1–C15)
+        </h2>
+        <p className="t-sup" style={{ fontSize: 12.5, color: C.slate, margin: '0 0 16px', maxWidth: 680, lineHeight: 1.45 }}>
+          When a brokerage optimises for CPL instead of CPQL, it systematically misallocates budget. For a mid-size brokerage (500 leads/mo, AED 75,000 ad spend), the combined operational revenue leak reaches <b>AED 455,270 per month</b> (AED 5,463,240 annually).
+        </p>
+      </div>
+
+      {/* Main Layout: Left Highlight Card, Right Table */}
+      <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: 20, marginBottom: 14 }}>
+        {/* Left Column: Big Leak Summary */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          <div style={{ background: C.midnight, color: C.ivory, padding: '16px 18px', borderTop: `3px solid ${C.copper}` }}>
+            <div className="t-meta" style={{ color: C.copperSoft, fontSize: 8 }}>TOTAL MONTHLY GCI LEAK</div>
+            <div className="serif" style={{ fontSize: 34, color: C.ivory, marginTop: 4 }}>AED 455,270</div>
+            <div className="t-note" style={{ color: C.mist, marginTop: 4 }}>AED 5,463,240 per annum</div>
+          </div>
+
+          <div style={{ background: C.paper, padding: '14px 16px', borderLeft: `2px solid ${C.copper}` }}>
+            <div className="t-meta" style={{ color: C.midnight, fontSize: 8 }}>CPQL BLINDNESS ALONE</div>
+            <div className="serif" style={{ fontSize: 24, color: C.copper, marginTop: 4 }}>AED 42,400</div>
+            <div className="t-note" style={{ color: C.slate, marginTop: 4 }}>
+              AED 21,200 from Meta over-investment + AED 21,200 from zero referral system.
+            </div>
+          </div>
+
+          <div style={{ background: C.paper, padding: '14px 16px', borderLeft: `2px solid ${C.midnight}` }}>
+            <div className="t-meta" style={{ color: C.midnight, fontSize: 8 }}>SPEED-TO-LEAD PENALTY</div>
+            <div className="serif" style={{ fontSize: 24, color: C.midnight, marginTop: 4 }}>AED 80,560</div>
+            <div className="t-note" style={{ color: C.slate, marginTop: 4 }}>
+              Average response latency: 917 mins vs &lt;5 mins benchmark.
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: Complete 15 Lever Table */}
+        <div style={{ maxHeight: 560, overflowY: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 10.5 }}>
+            <thead>
+              <tr style={{ background: C.midnight, color: C.ivory, textAlign: 'left' }}>
+                <th style={{ padding: '6px 8px', fontWeight: 500, width: '12%' }}>#</th>
+                <th style={{ padding: '6px 8px', fontWeight: 500, width: '64%' }}>Operational Lever</th>
+                <th style={{ padding: '6px 8px', fontWeight: 500, width: '24%', textAlign: 'right' }}>Monthly Leak</th>
+              </tr>
+            </thead>
+            <tbody>
+              {levers.map((l, i) => (
+                <tr key={l.code} style={{ borderBottom: `1px solid ${C.rule}`, background: i % 2 === 0 ? C.paper : 'transparent' }}>
+                  <td style={{ padding: '5px 8px', fontWeight: 700, color: C.copper }}>{l.code}</td>
+                  <td style={{ padding: '5px 8px', color: C.midnight }}>{l.lever}</td>
+                  <td style={{ padding: '5px 8px', fontWeight: 700, textAlign: 'right', color: C.midnight }}>{l.leak}</td>
+                </tr>
+              ))}
+              <tr style={{ background: C.midnight, color: C.ivory }}>
+                <td style={{ padding: '6px 8px', fontWeight: 700 }}>TOTAL</td>
+                <td style={{ padding: '6px 8px', fontWeight: 600 }}>Combined Operational GCI Leak Across All 15 Levers</td>
+                <td style={{ padding: '6px 8px', fontWeight: 700, textAlign: 'right', color: C.copperSoft }}>AED 455,270</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <Footer page="5 // STRATEGIC OUTLOOK" />
+    </Page>
+  );
+}
+
+/* B6 — ASSESSMENT MATRIX (Channel Strategy Reallocation & AI Transformation Impact) */
+export function OutlookAssessmentMatrix() {
+  const currentChannels = [
+    { channel: 'Meta / Instagram', alloc: '40%', spend: '30,000', leads: 25, cpql: '1,200' },
+    { channel: 'Google Search', alloc: '33%', spend: '25,000', leads: 10, cpql: '2,500' },
+    { channel: 'Portals (PF / Bayut)', alloc: '20%', spend: '15,000', leads: 20, cpql: '750' },
+    { channel: 'Referral System', alloc: '0%', spend: '0', leads: 10, cpql: '0' },
+    { channel: 'CTWA (WhatsApp)', alloc: '7%', spend: '5,000', leads: 8, cpql: '625' },
+  ];
+
+  const optimisedChannels = [
+    { channel: 'Meta / Instagram', alloc: '25%', spend: '18,750', leads: 16, cpql: '1,172' },
+    { channel: 'Google Search', alloc: '20%', spend: '15,000', leads: 6, cpql: '2,500' },
+    { channel: 'Portals (PF / Bayut)', alloc: '30%', spend: '22,500', leads: 30, cpql: '750' },
+    { channel: 'Referral System', alloc: '10%', spend: '7,500', leads: 28, cpql: '268' },
+    { channel: 'CTWA (WhatsApp)', alloc: '15%', spend: '11,250', leads: 23, cpql: '489' },
+  ];
+
+  const aiImpact = [
+    { metric: 'Lead response time', before: '917 minutes', after: '60 seconds' },
+    { metric: 'Follow-up touches', before: '1.3 touches (avg)', after: '14 automated touches' },
+    { metric: 'MQL → SQL rate', before: '13% (industry avg)', after: '32%+' },
+    { metric: 'CPQL (Meta)', before: 'AED 1,200', after: 'AED 400–500' },
+    { metric: 'CPQL (Google)', before: 'AED 2,400', after: 'AED 800–1,000' },
+    { metric: 'CPQL (Portals)', before: 'AED 750', after: 'AED 267–350' },
+    { metric: 'Blended CPQL', before: 'AED 1,027', after: 'AED 350–450 (56–66% lower)' },
+  ];
+
+  return (
+    <Page>
+      <Header left="CPL VS. CPQL REPORT" right="SECTIONS 10 & 11 — REALLOCATION & AI IMPACT" />
+
+      <div style={{ marginTop: 24 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span className="t-id" style={{ fontSize: 10 }}>CAPITAL REALLOCATION</span>
+          <span className="rule-c" style={{ width: 24 }} />
+        </div>
+        <h2 className="serif" style={{ fontSize: 28, margin: '6px 0 8px', color: C.midnight, fontWeight: 400 }}>
+          The Budget Shift: +41% Qualified Leads with Identical Ad Spend
+        </h2>
+        <p className="t-sup" style={{ fontSize: 12, color: C.slate, margin: '0 0 14px', maxWidth: 680, lineHeight: 1.4 }}>
+          Reallocating an AED 75,000 monthly marketing budget from CPL volume to CPQL efficiency increases qualified leads from <b>73 to 103</b> while dropping blended CPQL from <b>AED 1,027 to AED 728</b>.
+        </p>
+      </div>
+
+      {/* Two Comparative Tables: Current vs Optimised */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 14 }}>
+        {/* Table 1: Current State */}
+        <div>
+          <div style={{ background: C.midnight, color: C.ivory, padding: '6px 10px', fontSize: 10.5, fontWeight: 600 }}>
+            CURRENT STATE (CPL-OPTIMISED) · BLENDED: AED 1,027
+          </div>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 10 }}>
+            <thead>
+              <tr style={{ background: C.paper, color: C.midnight, textAlign: 'left' }}>
+                <th style={{ padding: '5px 6px' }}>Channel</th>
+                <th style={{ padding: '5px 6px' }}>Alloc</th>
+                <th style={{ padding: '5px 6px' }}>Spend</th>
+                <th style={{ padding: '5px 6px' }}>Qual</th>
+                <th style={{ padding: '5px 6px' }}>CPQL</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentChannels.map((c) => (
+                <tr key={c.channel} style={{ borderBottom: `1px solid ${C.rule}` }}>
+                  <td style={{ padding: '4px 6px', fontWeight: 600 }}>{c.channel}</td>
+                  <td style={{ padding: '4px 6px' }}>{c.alloc}</td>
+                  <td style={{ padding: '4px 6px' }}>AED {c.spend}</td>
+                  <td style={{ padding: '4px 6px', fontWeight: 600 }}>{c.leads}</td>
+                  <td style={{ padding: '4px 6px' }}>AED {c.cpql}</td>
+                </tr>
+              ))}
+              <tr style={{ background: 'rgba(14,34,51,0.06)', fontWeight: 700 }}>
+                <td style={{ padding: '5px 6px' }}>TOTAL</td>
+                <td style={{ padding: '5px 6px' }}>100%</td>
+                <td style={{ padding: '5px 6px' }}>AED 75,000</td>
+                <td style={{ padding: '5px 6px', color: C.midnight }}>73 leads</td>
+                <td style={{ padding: '5px 6px' }}>AED 1,027</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* Table 2: Optimised State */}
+        <div>
+          <div style={{ background: C.copper, color: C.ivory, padding: '6px 10px', fontSize: 10.5, fontWeight: 600 }}>
+            OPTIMISED STATE (CPQL-OPTIMISED) · BLENDED: AED 728
+          </div>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 10 }}>
+            <thead>
+              <tr style={{ background: C.paper, color: C.midnight, textAlign: 'left' }}>
+                <th style={{ padding: '5px 6px' }}>Channel</th>
+                <th style={{ padding: '5px 6px' }}>Alloc</th>
+                <th style={{ padding: '5px 6px' }}>Spend</th>
+                <th style={{ padding: '5px 6px' }}>Qual</th>
+                <th style={{ padding: '5px 6px' }}>CPQL</th>
+              </tr>
+            </thead>
+            <tbody>
+              {optimisedChannels.map((c) => (
+                <tr key={c.channel} style={{ borderBottom: `1px solid ${C.rule}`, background: 'rgba(184,112,63,0.04)' }}>
+                  <td style={{ padding: '4px 6px', fontWeight: 600 }}>{c.channel}</td>
+                  <td style={{ padding: '4px 6px' }}>{c.alloc}</td>
+                  <td style={{ padding: '4px 6px' }}>AED {c.spend}</td>
+                  <td style={{ padding: '4px 6px', fontWeight: 700, color: C.copper }}>{c.leads}</td>
+                  <td style={{ padding: '4px 6px', fontWeight: 600 }}>AED {c.cpql}</td>
+                </tr>
+              ))}
+              <tr style={{ background: 'rgba(184,112,63,0.12)', fontWeight: 700 }}>
+                <td style={{ padding: '5px 6px' }}>TOTAL</td>
+                <td style={{ padding: '5px 6px' }}>100%</td>
+                <td style={{ padding: '5px 6px' }}>AED 75,000</td>
+                <td style={{ padding: '5px 6px', color: C.copper }}>103 (+41%)</td>
+                <td style={{ padding: '5px 6px', color: C.copper }}>AED 728 (-29%)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* AI Transformation Impact Matrix */}
+      <div style={{ marginTop: 'auto', marginBottom: 10 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+          <span className="t-id" style={{ fontSize: 9 }}>WHAT THE OWELEEN AI QUALIFICATION LAYER DOES TO CPQL</span>
+          <span className="t-note" style={{ color: C.copper }}>Speed-to-lead &lt;60s · 14-touch cadence · BANT at scale</span>
+        </div>
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 10 }}>
+          <thead>
+            <tr style={{ background: C.midnight, color: C.ivory, textAlign: 'left' }}>
+              <th style={{ padding: '6px 8px', fontWeight: 500, width: '40%' }}>Transformation Metric</th>
+              <th style={{ padding: '6px 8px', fontWeight: 500, width: '30%' }}>Before Oweleen</th>
+              <th style={{ padding: '6px 8px', fontWeight: 500, width: '30%' }}>After Oweleen AI</th>
+            </tr>
+          </thead>
+          <tbody>
+            {aiImpact.map((a, i) => (
+              <tr key={a.metric} style={{ borderBottom: `1px solid ${C.rule}`, background: i % 2 === 0 ? C.paper : 'transparent' }}>
+                <td style={{ padding: '5px 8px', fontWeight: 600, color: C.midnight }}>{a.metric}</td>
+                <td style={{ padding: '5px 8px', color: C.slate }}>{a.before}</td>
+                <td style={{ padding: '5px 8px', fontWeight: 700, color: C.copper }}>{a.after}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <Footer page="6 // STRATEGIC OUTLOOK" />
+    </Page>
+  );
+}
+
+/* B7 — GOVERNANCE & ACTION SCORECARD (The 14-Point CPQL Scorecard & Decision Summary) */
+export function OutlookContactsGovernance() {
+  const scorecardQuestions = [
+    { q: '1. Do you track qualified leads separately from total leads?', pts: 'Never (0) · Sometimes (1) · Always (2)' },
+    { q: '2. Do you calculate CPQL per channel monthly?', pts: 'Never (0) · Sometimes (1) · Always (2)' },
+    { q: '3. Do you have a written, formal definition of "qualified lead" (BANT)?', pts: 'No (0) · Informal (1) · Formal BANT (2)' },
+    { q: '4. Do you respond to inbound leads within 5 minutes (speed-to-lead)?', pts: 'Never (0) · Sometimes (1) · Always (2)' },
+    { q: '5. Do you follow up more than 5 times per lead (cadence discipline)?', pts: 'Never (0) · Sometimes (1) · Always (2)' },
+    { q: '6. Do you reallocate marketing budget based on CPQL data?', pts: 'Never (0) · Sometimes (1) · Always (2)' },
+    { q: '7. Do you maintain an automated dead database reactivation process?', pts: 'No (0) · Quarterly manual (1) · Automated AI (2)' },
+  ];
+
+  return (
+    <Page>
+      <Header left="CPL VS. CPQL REPORT" right="SECTIONS 12 & 13 — SCORECARD & SUMMARY" />
+
+      <div style={{ marginTop: 24 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span className="t-id" style={{ fontSize: 10 }}>ORGANISATIONAL AUDIT</span>
+          <span className="rule-c" style={{ width: 24 }} />
+        </div>
+        <h2 className="serif" style={{ fontSize: 28, margin: '6px 0 8px', color: C.midnight, fontWeight: 400 }}>
+          The CPQL Scorecard: Establishing Your Maturity Position
+        </h2>
+        <p className="t-sup" style={{ fontSize: 12.5, color: C.slate, margin: '0 0 14px', maxWidth: 680, lineHeight: 1.45 }}>
+          Use this 14-point audit to establish your brokerage's current position on the CPQL maturity curve: Blind (0–3), Aware (4–7), Managed (8–11), or Optimised (12–14).
+        </p>
+      </div>
+
+      {/* Scorecard Questions Grid */}
+      <div style={{ marginBottom: 16 }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 10.5 }}>
+          <thead>
+            <tr style={{ background: C.midnight, color: C.ivory, textAlign: 'left' }}>
+              <th style={{ padding: '6px 8px', fontWeight: 500, width: '68%' }}>Self-Assessment Audit Question</th>
+              <th style={{ padding: '6px 8px', fontWeight: 500, width: '32%', textAlign: 'right' }}>Scoring Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            {scorecardQuestions.map((s, i) => (
+              <tr key={s.q} style={{ borderBottom: `1px solid ${C.rule}`, background: i % 2 === 0 ? C.paper : 'transparent' }}>
+                <td style={{ padding: '5px 8px', fontWeight: 500, color: C.midnight }}>{s.q}</td>
+                <td style={{ padding: '5px 8px', color: C.slate, textAlign: 'right' }}>{s.pts}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Score Interpretation Tiers */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10, marginBottom: 16 }}>
+        <div style={{ background: C.paper, borderTop: `2px solid #D9534F`, padding: '10px 12px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: 10, fontWeight: 700, color: '#D9534F' }}>0–3 PTS</span>
+            <span className="t-meta" style={{ fontSize: 8 }}>STATUS</span>
+          </div>
+          <div style={{ fontSize: 13, fontWeight: 600, color: C.midnight, marginTop: 4 }}>CPQL Blind</div>
+          <div className="t-note" style={{ color: C.slate, marginTop: 2 }}>Est. CPQL: AED 1,000–3,000+</div>
+        </div>
+
+        <div style={{ background: C.paper, borderTop: `2px solid #F0AD4E`, padding: '10px 12px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: 10, fontWeight: 700, color: '#F0AD4E' }}>4–7 PTS</span>
+            <span className="t-meta" style={{ fontSize: 8 }}>STATUS</span>
+          </div>
+          <div style={{ fontSize: 13, fontWeight: 600, color: C.midnight, marginTop: 4 }}>CPQL Aware</div>
+          <div className="t-note" style={{ color: C.slate, marginTop: 2 }}>Est. CPQL: AED 700–1,000</div>
+        </div>
+
+        <div style={{ background: C.paper, borderTop: `2px solid ${C.midnight}`, padding: '10px 12px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: 10, fontWeight: 700, color: C.midnight }}>8–11 PTS</span>
+            <span className="t-meta" style={{ fontSize: 8 }}>STATUS</span>
+          </div>
+          <div style={{ fontSize: 13, fontWeight: 600, color: C.midnight, marginTop: 4 }}>CPQL Managed</div>
+          <div className="t-note" style={{ color: C.slate, marginTop: 2 }}>Est. CPQL: AED 400–700</div>
+        </div>
+
+        <div style={{ background: C.paper, borderTop: `2px solid ${C.copper}`, padding: '10px 12px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: 10, fontWeight: 700, color: C.copper }}>12–14 PTS</span>
+            <span className="t-meta" style={{ fontSize: 8 }}>STATUS</span>
+          </div>
+          <div style={{ fontSize: 13, fontWeight: 600, color: C.midnight, marginTop: 4 }}>CPQL Optimised</div>
+          <div className="t-note" style={{ color: C.copper, fontWeight: 600, marginTop: 2 }}>Est. CPQL: AED 200–400</div>
+        </div>
+      </div>
+
+      {/* The One Line Takeaway Banner */}
+      <div style={{ background: C.paper, padding: '14px 18px', borderLeft: `3px solid ${C.copper}`, marginBottom: 14 }}>
+        <div className="t-meta" style={{ color: C.copper, fontSize: 8.5 }}>THE CORE EXECUTIVE RULE</div>
+        <div className="serif" style={{ fontSize: 18, color: C.midnight, marginTop: 4, fontStyle: 'italic', lineHeight: 1.35 }}>
+          “You have been optimising the cost of filling the pipe. Oweleen optimises the cost of what comes out of it.”
+        </div>
+      </div>
+
+      {/* Footer Band with Approval Checkpoints */}
+      <div style={{ marginTop: 'auto', background: C.midnight, color: C.ivory, padding: '16px 20px', marginBottom: 12 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: `1px solid rgba(255,255,255,0.15)`, paddingBottom: 10, marginBottom: 10 }}>
+          <OweleenLogo variant="full" color="light" size={0.85} />
+          <span className="t-meta" style={{ color: C.copperSoft }}>STRATEGIC OUTLOOK · COMPLETE INTELLIGENCE REPORT</span>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, fontSize: 9.5 }}>
+          <div style={{ color: C.mist }}>EDITION: VOL 1.0 / RESEARCH COMPLETE</div>
+          <div style={{ color: C.copperSoft }}>VALIDATED BY APPLIED INTELLIGENCE LEAD</div>
+          <div style={{ color: C.ivory, textAlign: 'right' }}>STATUS: APPROVED FOR DISTRIBUTION</div>
+        </div>
+      </div>
+
+      <Footer page="7 // STRATEGIC OUTLOOK" />
+    </Page>
+  );
+}
+
+/* =========================================================================
+   SET C: WORKFLOW & DIAGRAMS (C1 — C3)
+   Systems and Operational Process Flows
+   ========================================================================= */
+
+/* C1 — WORKFLOW OPERATING MAP (BANT Qualification & Routing Pipeline) */
+export function WorkflowOperatingMap() {
+  const stages = [
+    { num: '01', title: 'Inbound Ingestion', role: 'Multi-Channel Acquisition', task: 'Meta ads, Google PPC, Property Finder, Bayut, and Webhooks captured instantaneously.' },
+    { num: '02', title: '<60s AI Response', role: 'Velocity Gating', task: 'Instant WhatsApp API outreach before buyer moves to competing broker. 21× higher qualification.' },
+    { num: '03', title: 'BANT Scoring (0–130)', role: 'Multi-Model Qualification', task: 'Budget, Authority, Need, Timeline & Intent evaluated using structured UAE real estate playbooks.' },
+    { num: '04', title: 'Dynamic Tier Routing', role: 'Pipeline Optimization', task: 'HOT (80–130) → Instant broker phone call. WARM (50–79) → Automated nurture. COLD → 14-touch drip.' },
+    { num: '05', title: 'Viewing & Deal Close', role: 'Human Broker Authority', task: 'Viewing scheduled with pre-qualified buyer. Lead-to-deal conversion increases from 1.5% to 10%.' },
+  ];
+
+  return (
+    <Page>
+      <Header left="WORKFLOW & DIAGRAMS" right="THE CONVERSION PIPELINE — BANT QUALIFICATION" />
+
+      <div style={{ marginTop: 26 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span className="t-id" style={{ fontSize: 10 }}>OPERATING PIPELINE</span>
+          <span className="rule-c" style={{ width: 24 }} />
+        </div>
+        <h2 className="serif" style={{ fontSize: 32, margin: '8px 0 10px', color: C.midnight, fontWeight: 400 }}>
+          Lead Qualification & BANT Routing Architecture
+        </h2>
+        <p className="t-sup" style={{ fontSize: 13, color: C.slate, margin: '0 0 20px', maxWidth: 680, lineHeight: 1.45 }}>
+          End-to-end conversion architecture transitioning inbound enquiries from raw acquisition to verified buyer appointments via multi-channel AI gating.
+        </p>
+      </div>
+
+      {/* 5-Stage Process Flow Diagram */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 6 }}>
+        {stages.map((s, idx) => (
+          <div
+            key={s.num}
+            style={{
+              background: C.paper,
+              borderLeft: `3px solid ${idx === 2 ? C.copper : C.midnight}`,
+              padding: '12px 16px',
+              display: 'grid',
+              gridTemplateColumns: '50px 180px 1fr auto',
+              alignItems: 'center',
+              gap: 16,
+            }}
+          >
+            <div className="serif" style={{ fontSize: 24, color: idx === 2 ? C.copper : C.midnight, fontWeight: 400 }}>
+              {s.num}
+            </div>
+            <div>
+              <div style={{ fontSize: 12.5, fontWeight: 600, color: C.midnight }}>{s.title}</div>
+              <div className="t-meta" style={{ color: idx === 2 ? C.copper : C.slate, fontSize: 8 }}>{s.role}</div>
+            </div>
+            <div className="t-body" style={{ fontSize: 11, color: C.slate, lineHeight: 1.4 }}>
+              {s.task}
+            </div>
+            <div style={{ fontSize: 14, color: idx === 2 ? C.copper : C.mist }}>
+              {idx < 4 ? '↓' : '✓'}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Summary Band */}
+      <div style={{ marginTop: 'auto', background: C.midnight, color: C.ivory, padding: '16px 20px', borderLeft: `3px solid ${C.copper}`, marginBottom: 12 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div>
+            <div className="t-meta" style={{ color: C.copperSoft, fontSize: 8.5 }}>PIPELINE TRANSFORMATION</div>
+            <div style={{ fontSize: 12, marginTop: 4 }}>
+              Eliminating the 917-minute response delay lifts SQL-to-viewing conversion from <b>30% to 65%</b>.
+            </div>
+          </div>
+          <div style={{ textAlign: 'right' }}>
+            <span className="serif" style={{ fontSize: 22, color: C.copperSoft }}>10%</span>
+            <div className="t-note" style={{ color: C.mist }}>Top Performer Lead→Deal Rate</div>
+          </div>
+        </div>
+      </div>
+
+      <Footer page="1 // WORKFLOW & DIAGRAMS" />
+    </Page>
+  );
+}
+
+/* C2 — WORKFLOW TRANSFORMATION MAP (Channel Strategy Capital Reallocation) */
+export function WorkflowTransformationMap() {
+  return (
+    <Page>
+      <Header left="WORKFLOW & DIAGRAMS" right="BUDGET REALLOCATION — FROM CPL TO CPQL" />
+
+      <div style={{ marginTop: 26 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span className="t-id" style={{ fontSize: 10 }}>CAPITAL ALLOCATION SHIFT</span>
+          <span className="rule-c" style={{ width: 24 }} />
+        </div>
+        <h2 className="serif" style={{ fontSize: 32, margin: '8px 0 10px', color: C.midnight, fontWeight: 400 }}>
+          Channel Capital Reallocation: From CPL Waste to CPQL Value
+        </h2>
+        <p className="t-sup" style={{ fontSize: 13, color: C.slate, margin: '0 0 20px', maxWidth: 680, lineHeight: 1.45 }}>
+          Visualizing the structural capital transfer from inflated, low-conversion channels into high-velocity pipelines (Portals, CTWA, and Database Reactivation).
+        </p>
+      </div>
+
+      {/* Reallocation Architecture Diagram */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 60px 1fr', gap: 14, alignItems: 'center', marginBottom: 20 }}>
+        {/* Legacy Model Card */}
+        <div style={{ background: C.paper, borderTop: `3px solid ${C.midnight}`, padding: '16px 18px' }}>
+          <div className="t-meta" style={{ color: C.slate, fontSize: 8 }}>LEGACY CPL ALLOCATION (AED 75,000)</div>
+          <div className="serif" style={{ fontSize: 20, color: C.midnight, margin: '6px 0 12px' }}>Volume-Centric Stack</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: 11 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>Meta / Instagram (40%)</span>
+              <b>AED 30,000</b>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>Google Search (33%)</span>
+              <b>AED 25,000</b>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>Portals (20%)</span>
+              <b>AED 15,000</b>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>CTWA (7%)</span>
+              <b>AED 5,000</b>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>Referral Generation (0%)</span>
+              <b>AED 0</b>
+            </div>
+          </div>
+          <div style={{ marginTop: 14, borderTop: `1px solid ${C.rule}`, paddingTop: 10, display: 'flex', justifyContent: 'space-between' }}>
+            <span className="t-note">Yield: 73 Qualified Leads</span>
+            <span style={{ fontWeight: 700, color: C.midnight }}>CPQL: AED 1,027</span>
+          </div>
+        </div>
+
+        {/* Transition Arrow */}
+        <div style={{ textAlign: 'center' }}>
+          <div className="serif" style={{ fontSize: 28, color: C.copper }}>➔</div>
+          <div className="t-meta" style={{ fontSize: 7.5, color: C.copper, marginTop: 4 }}>OWELEEN ENGINE</div>
+        </div>
+
+        {/* Optimised Model Card */}
+        <div style={{ background: C.paper, borderTop: `3px solid ${C.copper}`, padding: '16px 18px' }}>
+          <div className="t-meta" style={{ color: C.copper, fontSize: 8 }}>OPTIMISED CPQL ALLOCATION (AED 75,000)</div>
+          <div className="serif" style={{ fontSize: 20, color: C.midnight, margin: '6px 0 12px' }}>Revenue-Centric Stack</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: 11 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>Portals (PF / Bayut) (30%)</span>
+              <b style={{ color: C.copper }}>AED 22,500</b>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>Meta / Instagram (25%)</span>
+              <b>AED 18,750</b>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>Google Search (20%)</span>
+              <b>AED 15,000</b>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>CTWA (WhatsApp) (15%)</span>
+              <b style={{ color: C.copper }}>AED 11,250</b>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>Referral & Dead DB (10%)</span>
+              <b style={{ color: C.copper }}>AED 7,500</b>
+            </div>
+          </div>
+          <div style={{ marginTop: 14, borderTop: `1px solid ${C.rule}`, paddingTop: 10, display: 'flex', justifyContent: 'space-between' }}>
+            <span className="t-note" style={{ color: C.copper, fontWeight: 600 }}>Yield: 103 (+41% More)</span>
+            <span style={{ fontWeight: 700, color: C.copper }}>CPQL: AED 728</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Strategic Outcome Note */}
+      <div style={{ marginTop: 'auto', background: C.midnight, color: C.ivory, padding: '16px 20px', borderLeft: `3px solid ${C.copper}`, marginBottom: 12 }}>
+        <div className="t-meta" style={{ color: C.copperSoft, fontSize: 8.5 }}>CAPITAL EFFICIENCY PRINCIPLE</div>
+        <div style={{ fontSize: 12, marginTop: 4, lineHeight: 1.5 }}>
+          The total ad spend is identical (AED 75,000). By reallocating budget toward channels with higher qualification multipliers and lower CPQL, the brokerage produces <b>30 additional qualified buyers every single month</b>.
+        </div>
+      </div>
+
+      <Footer page="2 // WORKFLOW & DIAGRAMS" />
+    </Page>
+  );
+}
+
+/* C3 — INTELLIGENCE ARCHITECTURE (Multi-Model AI Qualification & Decision Flow) */
+export function WorkflowIntelligenceArchitecture() {
+  return (
+    <Page dark>
+      <Header left="CPL VS. CPQL REPORT" right="SECTION 11 — SYSTEMS ARCHITECTURE" />
+
+      <div style={{ marginTop: 26 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span className="t-id" style={{ fontSize: 10, color: C.copper, letterSpacing: '.24em' }}>
+            SYSTEMS ARCHITECTURE
+          </span>
+          <span className="rule-c" style={{ width: 24 }} />
+        </div>
+        <h2 className="serif" style={{ fontSize: 32, margin: '8px 0 10px', color: C.ivory, fontWeight: 400 }}>
+          Multi-Model AI Qualification Architecture
+        </h2>
+        <p className="t-sup" style={{ fontSize: 13, color: C.copperSoft, margin: '0 0 24px', maxWidth: 680, lineHeight: 1.45 }}>
+          Technical architecture connecting omnichannel lead webhooks, multi-model conversational LLMs, dynamic 0–130 scoring, and human broker authority termination.
+        </p>
+      </div>
+
+      {/* 3-Column Dark Architecture Grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginBottom: 20 }}>
+        {/* Layer 1 */}
+        <div style={{ background: '#131D26', border: `1px solid rgba(255,255,255,0.12)`, padding: '18px 16px' }}>
+          <div className="t-meta" style={{ color: C.copper, fontSize: 8.5 }}>LAYER 01 · INGESTION & SPEED</div>
+          <div className="serif" style={{ fontSize: 18, color: C.ivory, margin: '6px 0 10px' }}>
+            Omnichannel Webhooks
+          </div>
+          <ul style={{ margin: '0 0 10px 16px', padding: 0, fontSize: 11, color: C.mist, lineHeight: 1.6 }}>
+            <li>Meta Ads Instant Forms & Lead Ads</li>
+            <li>Property Finder & Bayut Webhooks</li>
+            <li>Google Ads & High-Intent Landing Pages</li>
+            <li>Click-to-WhatsApp API Direct Session</li>
+            <li><b>&lt;60s Speed-to-Lead Gateway</b></li>
+            <li><b>24/7 Coverage (Captures 8pm–2am gap)</b></li>
+          </ul>
+        </div>
+
+        {/* Layer 2 */}
+        <div style={{ background: '#131D26', border: `1px solid ${C.copper}`, padding: '18px 16px' }}>
+          <div className="t-meta" style={{ color: C.copperSoft, fontSize: 8.5 }}>LAYER 02 · EVALUATION CORE</div>
+          <div className="serif" style={{ fontSize: 18, color: C.ivory, margin: '6px 0 10px' }}>
+            Multi-Model AI Scoring
+          </div>
+          <ul style={{ margin: '0 0 10px 16px', padding: 0, fontSize: 11, color: C.mist, lineHeight: 1.6 }}>
+            <li>Conversational BANT Qualification</li>
+            <li>6 Regional Nationality Playbooks</li>
+            <li>Dynamic 0–130 Scoring Engine</li>
+            <li>HOT / WARM / COLD Tier Segmentation</li>
+            <li>Automated 14-Touch Cadence Engine</li>
+            <li>Dead Database Quarterly Reactivation</li>
+          </ul>
+        </div>
+
+        {/* Layer 3 */}
+        <div style={{ background: '#131D26', border: `1px solid rgba(255,255,255,0.12)`, padding: '18px 16px' }}>
+          <div className="t-meta" style={{ color: C.copper, fontSize: 8.5 }}>LAYER 03 · EXECUTION & HANDOFF</div>
+          <div className="serif" style={{ fontSize: 18, color: C.ivory, margin: '6px 0 10px' }}>
+            Human Broker Authority
+          </div>
+          <ul style={{ margin: '0 0 10px 16px', padding: 0, fontSize: 11, color: C.mist, lineHeight: 1.6 }}>
+            <li>Calendar Integration & Auto-Booking</li>
+            <li>PropSpace / HubSpot CRM Sync</li>
+            <li>Real-Time WhatsApp Broker Alert</li>
+            <li>Pre-Viewing Qualification Dossier</li>
+            <li>Offer Gate & Compliance Verification</li>
+            <li><b>Authority Terminates with Human Broker</b></li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Bottom Process Flow Strip */}
+      <div style={{ marginTop: 'auto', background: 'rgba(0,0,0,0.4)', borderTop: `1px solid rgba(255,255,255,0.1)`, padding: '14px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+        <span className="t-meta" style={{ color: C.copperSoft, fontSize: 8.5 }}>
+          WORK MOVES: FROM INBOUND LEAD → TO AI QUALIFICATION (&lt;60S) → TO HUMAN BROKER DECISION
+        </span>
+        <span className="t-note" style={{ color: C.mist }}>Final advisory and negotiation authority remains with the broker</span>
+      </div>
+
+      <Footer page="3 // CPL VS. CPQL REPORT" light />
     </Page>
   );
 }
